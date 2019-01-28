@@ -35,29 +35,21 @@ public class Enemy_Move : MonoBehaviour
                     //anim.SetBool("IsWalking", false);
                     anim.SetBool("Attack", true);
                 }
-                else // (Vector3.Distance(transform.position, target.position) > Stop)
+                else 
                 {
                     anim.SetBool("IsWalking", true);
                     anim.SetBool("Attack", false);
                     enemy.destination = Player.transform.position;
-                    //transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                    
                 }
             }
         }
-        else if (!MovTime.Moving)
-        {
-            anim.SetBool("IsWalking", false);
-            anim.SetBool("Attack", false);
-            enemy.destination = transform.localPosition;
-            //enemy.destination = enemy.destination;
-        }
+       // else if (!MovTime.Moving)
+       // {
+       //     anim.SetBool("IsWalking", false);
+       //     anim.SetBool("Attack", false);
+       //     enemy.destination = transform.localPosition;
+       //     //enemy.destination = enemy.destination;
+       // }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.CompareTag("player"))
-    //    {
-    //        anim.SetBool("IsWalking", false);
-    //    }
-    //}
 }

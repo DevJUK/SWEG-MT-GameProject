@@ -30,9 +30,7 @@ public class Entity : MonoBehaviour
 	}	
 	
     public void Move(Vector3 MoveDir)
-    {
-        //if (Input.GetKey(Key:))
-        //{
+    {        
          if (Input.GetKey(KeyCode.W))
          {
               Moving = true;
@@ -59,42 +57,39 @@ public class Entity : MonoBehaviour
               {
                     anim.SetBool("IsRunning", false);
                     MovementSpeed = WalkSpeed;
-              }           
+              }
+
+              if (Input.GetKey(KeyCode.A))
+              {
+                 MovementSpeed = WalkSpeed;
+
+                anim.SetBool("IsWalking", false);
+                anim.SetBool("IsWalkingL", true);
+              
+                  
+              }
+              else
+              {
+                anim.SetBool("IsWalking", true);
+                anim.SetBool("IsWalkingL", false);
+              }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                MovementSpeed = WalkSpeed;
+
+                anim.SetBool("IsWalking", false);
+                anim.SetBool("IsWalkingR", true);
+
+
+            }
+            else
+            {
+                anim.SetBool("IsWalking", true);
+                anim.SetBool("IsWalkingR", false);
+            }
         }
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    Moving = true;
-        //
-        //    anim.SetBool("IsWalkingL", true);
-        //
-        //    Vector3 Vec;
-        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-        //
-        //    Rigid.velocity = Vec * SpeedModifier;
-        //}
-        //// else if (Input.GetKey(KeyCode.S))
-        //// {
-        ////     Moving = true;
-        ////
-        ////     anim.SetBool("IsWalking", true);
-        ////
-        ////     Vector3 Vec;
-        ////     Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-        ////
-        ////     Rigid.velocity = Vec * SpeedModifier;
-        //// }
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    Moving = true;
-        //
-        //    anim.SetBool("IsWalkingR", true);
-        //
-        //    Vector3 Vec;
-        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-        //
-        //    Rigid.velocity = Vec * SpeedModifier;
-        //}
-        //} //
+        
 
         //if(Input.GetKey(KeyCode.Space))
         // {

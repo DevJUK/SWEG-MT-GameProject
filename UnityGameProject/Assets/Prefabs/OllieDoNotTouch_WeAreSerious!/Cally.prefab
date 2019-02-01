@@ -1605,9 +1605,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b838cd82934bc04eb38fc61fcab678e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 2
-  WalkSpeed: 2
-  SprintSpeed: 4
+  MovementSpeed: 2.5
+  WalkSpeed: 2.5
+  SneekSpeed: 1
+  SprintSpeed: 5
   JumpStrength: 0
   SpeedModifier: 1
 --- !u!114 &3427218183789735626
@@ -1639,10 +1640,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.6099484
+  m_Radius: 0.25898957
+  m_Height: 1.6453538
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8478066, z: 0}
+  m_Center: {x: 0, y: 0.8242419, z: 0}
 --- !u!54 &3427218183789735630
 Rigidbody:
   m_ObjectHideFlags: 0

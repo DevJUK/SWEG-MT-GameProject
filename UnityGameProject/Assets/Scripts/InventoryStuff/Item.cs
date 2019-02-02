@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour
 {
 	public string ItemName;
+	public string ItemDesc;
 	public Sprite ItemSprite;
 	public Sprite ItemInvImage;
 	public GameObject ItemObject;
@@ -26,14 +27,14 @@ public class Item : MonoBehaviour
 		ItemObject = gameObject;
 		ItemName = gameObject.name;
 
-		if (gameObject.GetComponent<Image>() == null)
-		{
-			ItemSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-		}
-		else
-		{
-			ItemSprite = gameObject.GetComponent<Image>().sprite;
-		}
+		//if (gameObject.GetComponent<Image>() == null)
+		//{
+		//	ItemSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+		//}
+		//else
+		//{
+		//	ItemSprite = gameObject.GetComponent<Image>().sprite;
+		//}
 	}
 
 

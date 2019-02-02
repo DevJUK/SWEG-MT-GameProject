@@ -27,6 +27,9 @@ public class Mouse_Move : MonoBehaviour
 
     Rigidbody rigid;
 
+	// (Jonathan) - Added a bool to enable / disable movement of the camera so the Inv can be accessed better.
+	internal bool EnableCamera;
+
 	void Start ()
     {
         rigid = GetComponent<Rigidbody>();
@@ -37,29 +40,40 @@ public class Mouse_Move : MonoBehaviour
 	
 	void Update ()
     {
-		if (axess == RotationAxis.MouseX)
-        {
-            //transform.Rotate(0, Input.GetAxis ("Mouse X") * sensitivityHor, 0);
-        }
-       // else if (axess == RotationAxis.MouseY)
-       // {
-       //     rotationX -= Input.GetAxis("Mouse Y") * sensitivityVer;
-       //     rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
-       //
-       //     float rotationY = Cam.localEulerAngles.y;
-       //
-       //     Cam.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-       // }
-        else
-        {
-            rotationY -= Input.GetAxis("Mouse Y") * sensitivityVer;
-            rotationY = Mathf.Clamp(rotationY, minVert, maxVert);
 
-            float delta = Input.GetAxis("Mouse X") * sensitivityHor;
-            float rotationX = transform.localEulerAngles.y + delta;
+		// (Jonathan) - Bool is just here to allow it to be disabled or enabled
+		if (!EnableCamera)
+		{
 
-            Cam.localEulerAngles = new Vector3(rotationY, Cam.rotation.y, 0);
-            transform.localEulerAngles = new Vector3(transform.rotation.x, rotationX, 0);
-        }
+			if (axess == RotationAxis.MouseX)
+			{
+				//transform.Rotate(0, Input.GetAxis ("Mouse X") * sensitivityHor, 0);
+			}
+			// else if (axess == RotationAxis.MouseY)
+			// {
+			//     rotationX -= Input.GetAxis("Mouse Y") * sensitivityVer;
+			//     rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
+			//
+			//     float rotationY = Cam.localEulerAngles.y;
+			//
+			//     Cam.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+			// }
+			else
+			{
+				rotationY -= Input.GetAxis("Mouse Y") * sensitivityVer;
+				rotationY = Mathf.Clamp(rotationY, minVert, maxVert);
+
+				float delta = Input.GetAxis("Mouse X") * sensitivityHor;
+				float rotationX = transform.localEulerAngles.y + delta;
+
+				Cam.localEulerAngles = new Vector3(rotationY, Cam.rotation.y, 0);
+				transform.localEulerAngles = new Vector3(transform.rotation.x, rotationX, 0);
+			}
+
+
+
+
+
+		}
 	}
 }

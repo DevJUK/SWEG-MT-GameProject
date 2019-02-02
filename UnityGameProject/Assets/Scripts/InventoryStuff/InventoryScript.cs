@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class InventoryScript : MonoBehaviour
 {
 
-	public const int NumberItemSlots = 8;						// Creates a constant number of the amount of inventory slots the inventory has
+	public const int NumberItemSlots = 10;						// Creates a constant number of the amount of inventory slots the inventory has
 
 	public Image[] ItemImages = new Image[NumberItemSlots];     // Creates an array of images that is the size of the number of slots in the inventory (this is used to hold the images in the inventory)
 	public Item[] items = new Item[NumberItemSlots];            // Creates an array of items that is the size of the number of slots in the inventory (this is used to hold the actual item)
@@ -30,6 +30,8 @@ public class InventoryScript : MonoBehaviour
 
 	internal Item ArrayItem;
 
+	public int NumberOfPresses;
+	public GameObject ItemDetailPrefab;
 
 
 	private void Start()
@@ -57,13 +59,27 @@ public class InventoryScript : MonoBehaviour
 			{
 				foreach (Item i in GetComponent<InventoryScript>().items)                         // search the items in the inveontry
 				{
-					if (i == null)                                          // if NULL then break out of the loop (avoids NullExepctionErrors)
+					if (NumberOfPresses != 2)
 					{
-						continue;
+						if (i == null)                                          // if NULL then break out of the loop (avoids NullExepctionErrors)
+						{
+							continue;
+						}
+						else
+						{
+							if (SelectedItem == null)
+							{
+								SelectedItem = i;
+							}
+
+							NumberOfPresses++;
+						}
 					}
-					else if (i.GetComponent<SpriteRenderer>().sprite == item.gameObject.GetComponent<Image>().sprite)   // if an item has the same sprite as the inventory slot
+					else
 					{
-						SelectedItem = i;
+						OpenItem();
+						NumberOfPresses = 0;
+						SelectedItem = null;
 					}
 				}
 			}
@@ -93,7 +109,7 @@ public class InventoryScript : MonoBehaviour
 
 			if (ItemsInInv)
 			{
-				ItemImages[i].GetComponent<Stack>().AddToStackValue();
+				//ItemImages[i].GetComponent<Stack>().AddToStackValue();
 				break;
 			}
 			else
@@ -112,7 +128,7 @@ public class InventoryScript : MonoBehaviour
 					}
 
 					ItemImages[i].enabled = true;
-					ItemImages[i].GetComponent<Stack>().AddToStackValue();
+					//ItemImages[i].GetComponent<Stack>().AddToStackValue();
 					//ItemImages[i].GetComponent<Stack>().SetItemText(items[i]);				// would show the name of the item - removed as the selected part isn't made
 					ItemsInInv = true;
 					break;
@@ -151,6 +167,32 @@ public class InventoryScript : MonoBehaviour
 			}
 		}
 	}
+
+
+
+
+	public void OpenItem()
+	{
+		GameObject ItemDetail = Instantiate(ItemDetailPrefab);
+		//Vector2 ScreenPos = Camera.main.WorldToScreenPoint();
+		ItemDetail.transform.SetParent(GameObject.Find("InvSlots").transform, false);
+		//ItemDetail.transform.position = ScreenPos;
+		ItemDetail.GetComponent<Animator>().SetTrigger("FadeIn");
+
+		foreach (Text t in ItemDetail.GetComponentsInChildren<Text>())
+		{
+			if (t.gameObject.name == "ItemName")
+			{
+				t.text = SelectedItem.ItemName;
+			}
+
+			if (t.gameObject.name == "ItemDesc")
+			{
+				t.text = SelectedItem.ItemDesc;
+			}
+		}
+	}
+
 
 
 	public void ClearInv()

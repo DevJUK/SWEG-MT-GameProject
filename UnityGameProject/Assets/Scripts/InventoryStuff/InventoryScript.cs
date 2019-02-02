@@ -32,12 +32,11 @@ public class InventoryScript : MonoBehaviour
 
 	public int NumberOfPresses;
 	public GameObject ItemDetailPrefab;
-
+	internal bool PanelOpen;
+	private bool PrefabMade;
 
 	private void Start()
 	{
-		//Ray = GameObject.Find("CanvasInv").GetComponent<GraphicRaycaster>();
-
 		Events = FindObjectOfType<EventSystem>().GetComponent<EventSystem>();
 	}
 
@@ -59,7 +58,14 @@ public class InventoryScript : MonoBehaviour
 			{
 				foreach (Item i in GetComponent<InventoryScript>().items)                         // search the items in the inveontry
 				{
-					if (NumberOfPresses != 2)
+					if (NumberOfPresses == 2)
+					{
+
+						OpenItem();
+						NumberOfPresses = 0;
+
+					}
+					else
 					{
 						if (i == null)                                          // if NULL then break out of the loop (avoids NullExepctionErrors)
 						{
@@ -70,16 +76,23 @@ public class InventoryScript : MonoBehaviour
 							if (SelectedItem == null)
 							{
 								SelectedItem = i;
+
+								foreach (Image i2 in ItemImages)
+								{
+									if (i2.sprite == SelectedItem.ItemSprite)
+									{
+										i2.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
+										break;
+									}
+									else
+									{
+										continue;
+									}
+								}
 							}
 
 							NumberOfPresses++;
 						}
-					}
-					else
-					{
-						OpenItem();
-						NumberOfPresses = 0;
-						SelectedItem = null;
 					}
 				}
 			}
@@ -161,7 +174,7 @@ public class InventoryScript : MonoBehaviour
 				items[i] = null;                                // removes the item from the inventory returning it to null
 				ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 				ItemImages[i].enabled = false;
-				ItemImages[i].GetComponent<Stack>().ResetStack();
+				//ItemImages[i].GetComponent<Stack>().ResetStack();
 				//ItemImages[i].GetComponent<Stack>().ResetItemText();					// would reset the name of the slot to nothing - not needed as its not in use
 				break;
 			}
@@ -173,22 +186,55 @@ public class InventoryScript : MonoBehaviour
 
 	public void OpenItem()
 	{
-		GameObject ItemDetail = Instantiate(ItemDetailPrefab);
-		//Vector2 ScreenPos = Camera.main.WorldToScreenPoint();
-		ItemDetail.transform.SetParent(GameObject.Find("InvSlots").transform, false);
-		//ItemDetail.transform.position = ScreenPos;
-		ItemDetail.GetComponent<Animator>().SetTrigger("FadeIn");
-
-		foreach (Text t in ItemDetail.GetComponentsInChildren<Text>())
+		if (!PanelOpen)
 		{
-			if (t.gameObject.name == "ItemName")
-			{
-				t.text = SelectedItem.ItemName;
-			}
+			PanelOpen = true;
 
-			if (t.gameObject.name == "ItemDesc")
+
+			if (!PrefabMade)
 			{
-				t.text = SelectedItem.ItemDesc;
+				PrefabMade = true;
+
+				GameObject ItemDetail = Instantiate(ItemDetailPrefab);
+				ItemDetail.gameObject.name = "UIBG";
+				ItemDetail.transform.SetParent(GameObject.Find("InvSlots").transform, false);
+				ItemDetail.GetComponent<Animator>().SetTrigger("FadeIn");
+
+				foreach (Text t in ItemDetail.GetComponentsInChildren<Text>())
+				{
+					if (t.gameObject.name == "ItemName")
+					{
+						t.text = SelectedItem.ItemName;
+					}
+
+					if (t.gameObject.name == "ItemDesc")
+					{
+						t.text = SelectedItem.ItemDesc;
+					}
+				}
+
+				SelectedItem = null;
+			}
+			else
+			{
+				GameObject Panel = GameObject.Find("UIBG");
+
+				Panel.GetComponent<Animator>().SetTrigger("FadeIn");
+
+				foreach (Text t in Panel.GetComponentsInChildren<Text>())
+				{
+					if (t.gameObject.name == "ItemName")
+					{
+						t.text = SelectedItem.ItemName;
+					}
+
+					if (t.gameObject.name == "ItemDesc")
+					{
+						t.text = SelectedItem.ItemDesc;
+					}
+				}
+
+				SelectedItem = null;
 			}
 		}
 	}

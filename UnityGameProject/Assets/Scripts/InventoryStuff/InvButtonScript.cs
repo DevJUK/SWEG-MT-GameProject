@@ -29,14 +29,12 @@ public class InvButtonScript : MonoBehaviour
 		{
 			if (!IsInvOpen)
 			{
-				Time.timeScale = 0;
 				Inv.SetActive(true);
 				IsInvOpen = true;
 				StopCamera();
 			}
 			else
 			{
-				Time.timeScale = 1;
 				Inv.SetActive(false);
 				IsInvOpen = false;
 				StopCamera();

@@ -197,7 +197,7 @@ public class InventoryScript : MonoBehaviour
 
 				GameObject ItemDetail = Instantiate(ItemDetailPrefab);
 				ItemDetail.gameObject.name = "UIBG";
-				ItemDetail.transform.SetParent(GameObject.Find("InvSlots").transform, false);
+				ItemDetail.transform.SetParent(GameObject.Find("InvCanvas").transform, false);
 				ItemDetail.GetComponent<Animator>().SetTrigger("FadeIn");
 
 				foreach (Text t in ItemDetail.GetComponentsInChildren<Text>())
@@ -214,6 +214,7 @@ public class InventoryScript : MonoBehaviour
 				}
 
 				SelectedItem = null;
+				NumberOfPresses = 0;
 			}
 			else
 			{
@@ -235,6 +236,7 @@ public class InventoryScript : MonoBehaviour
 				}
 
 				SelectedItem = null;
+				NumberOfPresses = 0;
 			}
 		}
 	}

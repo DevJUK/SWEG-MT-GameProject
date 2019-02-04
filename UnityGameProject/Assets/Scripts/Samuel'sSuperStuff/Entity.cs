@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
     public float WalkSpeed = 2;
     public float SneekSpeed = 1;
     public float SprintSpeed = 4;
+    public float startColliderHeight = 0;
     private float Stamina = 5.0f;
 
     public float JumpStrength;
@@ -17,8 +18,10 @@ public class Entity : MonoBehaviour
     Animator anim; //Assigns the animator
 
     private bool StartRotate = true;
+    private CapsuleCollider col;
 
     private bool Moving;
+    private bool isCrouching;
 
     //set to one for no effect and only changed in traps;
     public float SpeedModifier = 1;       
@@ -27,11 +30,46 @@ public class Entity : MonoBehaviour
     {
         MovementSpeed = WalkSpeed;
         anim = GetComponent<Animator>(); //Calls animator
-        Rigid = GetComponent<Rigidbody>();        
+        Rigid = GetComponent<Rigidbody>();
+        col = GetComponent<CapsuleCollider>();
+        startColliderHeight = col.height;
 	}	
 	
     public void Move(Vector3 MoveDir)
     {
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            anim.SetBool("IsCrouching", true);
+            MovementSpeed = SneekSpeed;
+
+            AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);
+            if (isCrouching)
+            {
+                if (stateinfo.IsName("Crouch_Idle") || stateinfo.IsName("Crouch_Walk"))
+                {
+                    float colliderHeight = anim.GetFloat("ColliderHeight");
+                    col.height = startColliderHeight * colliderHeight;
+                    float centery = col.height / 2;
+                    col.center = new Vector3(col.center.x, centery, col.center.z);
+                }
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                anim.SetBool("IsCrouchWalk", true);
+            }
+            else
+            {
+                anim.SetBool("IsCrouchWalk", false);
+            }
+        }
+        else
+        {
+            MovementSpeed = WalkSpeed;
+            anim.SetBool("IsCrouching", false);
+            col.height = startColliderHeight;
+            float centery = col.height / 2;
+            col.center = new Vector3(col.center.x, centery, col.center.z);
+        }
         if (Input.GetKey(KeyCode.W))
         {
             Moving = true;
@@ -47,12 +85,7 @@ public class Entity : MonoBehaviour
             {
                 MovementSpeed = SprintSpeed;
 
-                anim.SetBool("IsRunning", true);
-
-                //Vector3 Vec;
-                //Vec = new Vector3(MoveDir.x * SprintSpeed, Rigid.velocity.y, MoveDir.z * SprintSpeed);
-                //
-                //Rigid.velocity = Vec * SpeedModifier;
+                anim.SetBool("IsRunning", true);               
             }
             else
             {
@@ -61,13 +94,30 @@ public class Entity : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftControl))
             {
+                isCrouching = true;
                 MovementSpeed = SneekSpeed;
 
-                //anim.SetBool("", true);
+                anim.SetBool("IsCrouchWalk", true);
+
+                AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);
+                if (isCrouching)
+                {
+                    if (stateinfo.IsName("Crouch_Idle") || stateinfo.IsName("Crouch_Walk"))
+                    {
+                        float colliderHeight = anim.GetFloat("ColliderHeight");
+                        col.height = startColliderHeight * colliderHeight;
+                        float centery = col.height / 2;
+                        col.center = new Vector3(col.center.x, centery, col.center.z);
+                    }
+                }                
             }
             else
             {
-                //anim.SetBool("", false);
+                MovementSpeed = WalkSpeed;
+                anim.SetBool("IsCrouchWalk", false);
+                col.height = startColliderHeight;
+                float centery = col.height / 2;
+                col.center = new Vector3(col.center.x, centery, col.center.z);
             }
 
             if (Input.GetKey(KeyCode.A))
@@ -135,6 +185,7 @@ public class Entity : MonoBehaviour
             anim.SetBool("IsWalkingL", false);
             anim.SetBool("IsWalkingR", false);
             anim.SetBool("IsRunning", false);
+            
         }
     }
 

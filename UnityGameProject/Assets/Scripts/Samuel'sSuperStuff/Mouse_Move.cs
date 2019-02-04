@@ -47,17 +47,9 @@ public class Mouse_Move : MonoBehaviour
 
 			if (axess == RotationAxis.MouseX)
 			{
-				//transform.Rotate(0, Input.GetAxis ("Mouse X") * sensitivityHor, 0);
+				
 			}
-			// else if (axess == RotationAxis.MouseY)
-			// {
-			//     rotationX -= Input.GetAxis("Mouse Y") * sensitivityVer;
-			//     rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
-			//
-			//     float rotationY = Cam.localEulerAngles.y;
-			//
-			//     Cam.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-			// }
+			
 			else
 			{
 				rotationY -= Input.GetAxis("Mouse Y") * sensitivityVer;

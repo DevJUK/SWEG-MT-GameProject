@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class StatsUI : MonoBehaviour
@@ -40,6 +38,12 @@ public class StatsUI : MonoBehaviour
 		{
 			Image = GetComponent<Image>();
 		}
+	}
+
+
+	private void FixedUpdate()
+	{
+		UpdateStats();	
 	}
 
 

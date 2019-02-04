@@ -16,16 +16,6 @@ public class InvButtonScript : MonoBehaviour
 		}
 	}
 
-	private void Start()
-	{
-		if (Inv != null)
-		{
-			Inv.SetActive(true);
-			UpdateStatsUI();
-			Inv.SetActive(false);
-		}
-	}
-
 	private void Update()
 	{
 		if (Input.GetButtonDown("OpenInv"))
@@ -59,15 +49,6 @@ public class InvButtonScript : MonoBehaviour
 		foreach (Mouse_Move i in FindObjectsOfType<Mouse_Move>())
 		{
 			i.EnableCamera = !i.EnableCamera;
-		}
-	}
-
-
-	private void UpdateStatsUI()
-	{
-		foreach (StatsUI i in FindObjectsOfType<StatsUI>())
-		{
-			i.UpdateStats();
 		}
 	}
 }

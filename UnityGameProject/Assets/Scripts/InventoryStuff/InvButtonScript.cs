@@ -7,11 +7,22 @@ public class InvButtonScript : MonoBehaviour
 	public GameObject Inv;
 	private bool IsInvOpen;
 
-	private void Start()
+
+	private void Awake()
 	{
 		if (Inv == null)
 		{
 			Debug.Log("Plase create an empty gameobject to store the hidden items, then attach it here!");
+		}
+	}
+
+	private void Start()
+	{
+		if (Inv != null)
+		{
+			Inv.SetActive(true);
+			UpdateStatsUI();
+			Inv.SetActive(false);
 		}
 	}
 
@@ -48,6 +59,15 @@ public class InvButtonScript : MonoBehaviour
 		foreach (Mouse_Move i in FindObjectsOfType<Mouse_Move>())
 		{
 			i.EnableCamera = !i.EnableCamera;
+		}
+	}
+
+
+	private void UpdateStatsUI()
+	{
+		foreach (StatsUI i in FindObjectsOfType<StatsUI>())
+		{
+			i.UpdateStats();
 		}
 	}
 }

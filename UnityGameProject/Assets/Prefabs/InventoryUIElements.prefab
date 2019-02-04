@@ -1365,6 +1365,7 @@ GameObject:
   - component: {fileID: 5094988432411240898}
   - component: {fileID: 5094988432411240909}
   - component: {fileID: 5094988432411240908}
+  - component: {fileID: 767767805}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1442,6 +1443,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   HealthBar: {fileID: 5094988432411240909}
+--- !u!114 &767767805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988432411240910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 0
 --- !u!1 &5094988432459297076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,6 +1999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988432680823141}
   - component: {fileID: 5094988432680823162}
+  - component: {fileID: 434926747}
   m_Layer: 0
   m_Name: PerceptionSlider
   m_TagString: Untagged
@@ -2063,6 +2078,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &434926747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988432680823140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 6
 --- !u!1 &5094988432691113448
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988433109043117}
   - component: {fileID: 5094988433109043106}
+  - component: {fileID: 2102159928}
   m_Layer: 0
   m_Name: WillpowerSlider
   m_TagString: Untagged
@@ -3114,6 +3143,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2102159928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433109043116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 5
 --- !u!1 &5094988433110886851
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,7 +3491,7 @@ MonoBehaviour:
   Ray: {fileID: 5094988433842523229}
   Events: {fileID: 0}
   NumberOfPresses: 0
-  ItemDetailPrefab: {fileID: 3924766840663151415, guid: 875aa970aac59c54a91c5fa1e10c1b9c,
+  ItemDetailPrefab: {fileID: 3737837587453178179, guid: c0f93a3865c4491439d0842e9880683e,
     type: 3}
 --- !u!1 &5094988433172737713
 GameObject:
@@ -4107,6 +4149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988433407559151}
   - component: {fileID: 5094988433407559148}
+  - component: {fileID: 1208947370}
   m_Layer: 0
   m_Name: AgilitySlider
   m_TagString: Untagged
@@ -4185,6 +4228,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1208947370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433407559150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 3
 --- !u!1 &5094988433426863670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,6 +4549,7 @@ GameObject:
   - component: {fileID: 5094988433540135934}
   - component: {fileID: 5094988433540135929}
   - component: {fileID: 5094988433540135928}
+  - component: {fileID: 801436499}
   m_Layer: 0
   m_Name: SanityBar
   m_TagString: Untagged
@@ -4570,6 +4627,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   HealthBar: {fileID: 5094988433540135929}
+--- !u!114 &801436499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433540135930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 1
 --- !u!1 &5094988433547342360
 GameObject:
   m_ObjectHideFlags: 0
@@ -5345,6 +5415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988433805185355}
   - component: {fileID: 5094988433805185352}
+  - component: {fileID: 1004810122}
   m_Layer: 0
   m_Name: IntelligenceSlider
   m_TagString: Untagged
@@ -5423,6 +5494,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1004810122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433805185354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 4
 --- !u!1 &5094988433823033574
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988433839505110}
   - component: {fileID: 5094988433839505111}
+  - component: {fileID: 405581731}
   m_Layer: 0
   m_Name: StrengthSlider
   m_TagString: Untagged
@@ -5585,6 +5670,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &405581731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433839505105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 2
 --- !u!1 &5094988433842523231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5905,6 +6003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5094988433920313382}
   - component: {fileID: 5094988433920313383}
+  - component: {fileID: 1613679582}
   m_Layer: 0
   m_Name: CharismaSlider
   m_TagString: Untagged
@@ -5983,6 +6082,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1613679582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094988433920313377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0478d1605fdbeb4ab3c141d6555f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStat: 7
 --- !u!1 &5094988433927494781
 GameObject:
   m_ObjectHideFlags: 0

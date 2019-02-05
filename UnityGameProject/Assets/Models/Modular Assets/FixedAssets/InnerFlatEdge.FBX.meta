@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 5ba52d71e6df0ca47bfb129c48dc50e8
+guid: 2ff8b492f6a0b104b98e7f21000046e7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #749'
-    2100002: 'Material #413'
-    2100004: 'Material #412'
+    2100000: 'Material #157'
+    2100002: 'Material #414'
+    2100004: 'Material #413'
+    2100006: 'Material #412'
+    2100008: 'Material #411'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ModularWall005
+    4300000: ModularWallInnerFlat
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1

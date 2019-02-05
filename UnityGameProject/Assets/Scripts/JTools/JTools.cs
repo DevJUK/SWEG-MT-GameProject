@@ -24,6 +24,16 @@ public class JTools : EditorWindow
 	private bool ShowInitPrefab;
 
 	[SerializeField]
+	private Material ApplyMaterial;
+
+	[SerializeField]
+	private Material[] Mats = new Material[1];
+
+	[SerializeField]
+	private string[] SelectElement;
+	public int SelectElementLength;
+
+	[SerializeField]
 	private GameObject[] Prefabs = new GameObject[10];
 
 	[MenuItem("Window/J-Tools _j")]
@@ -47,6 +57,8 @@ public class JTools : EditorWindow
 		AddScripts();
 
 		InitPrefabs();
+
+		AddMaterials();
 	}
 
 
@@ -307,4 +319,124 @@ public class JTools : EditorWindow
 			GUILayout.EndHorizontal();
 		}
 	}
+
+
+
+
+
+
+	public void AddMaterials()
+	{
+		GUILayout.Space(10f);
+		GUILayout.Label("Add Materials", EditorStyles.boldLabel);
+		GUILayout.Space(10f);
+
+		EditorGUILayout.HelpBox("Add materials to selected gameobjects", MessageType.Info);
+
+
+		ApplyMaterial = (Material)EditorGUILayout.ObjectField("Material To Add:", ApplyMaterial, typeof(Material));
+
+
+
+		if (GUILayout.Button("Find", GUILayout.MaxWidth(100)))
+		{
+
+			if (Mats.Length == 0)
+			{
+				// Makes the Array 1 Bigger
+				Material[] TempArrayPlus1 = new Material[1];
+				Mats.CopyTo(TempArrayPlus1, 0);
+				Mats = TempArrayPlus1;
+			}
+
+			foreach (GameObject I in Selection.gameObjects)
+			{
+				if (I.GetComponent<MeshRenderer>())
+				{
+					foreach (Material Mat in I.GetComponent<MeshRenderer>().sharedMaterials)
+					{
+						for (int i = 0; i < Mats.Length; i++)
+						{
+							if (!ArrayUtility.Contains(Mats, Mat))
+							{
+								if (Mats[0] != null)
+								{
+									// Makes the Array 1 Bigger
+									Material[] TempArray = new Material[Mats.Length + 1];
+									Mats.CopyTo(TempArray, 0);
+									Mats = TempArray;
+								}
+
+								Mats[Mats.Length - 1] = Mat;
+							}
+						}
+					}
+				}
+			}
+
+
+
+
+			SelectElementLength = Mats.Length;
+
+
+
+		}
+
+
+
+		// Bit of code that makes the array visable
+		ScriptableObject Target = this;
+		SerializedObject SO = new SerializedObject(Target);
+		SerializedProperty Array = SO.FindProperty("Mats");
+
+		EditorGUILayout.PropertyField(Array, true);
+		SO.ApplyModifiedProperties();
+		// end of bit of code that does the thing stated above
+
+
+		if (Mats.Length == 0)
+		{
+			// Makes the Array 1 Bigger
+			string[] TempArrayString = new string[SelectElementLength];
+			SelectElement = TempArrayString;
+
+
+
+			for (int i = 0; i < Mats.Length; i++)
+			{
+				SelectElement[i] = i.ToString();
+			}
+		}
+
+		SelectElementLength = EditorGUILayout.Popup(SelectElementLength, SelectElement);
+
+
+
+		//if (GUILayout.Button("Apply", GUILayout.MaxWidth(100)))
+		//{
+		//	foreach (GameObject I in Selection.gameObjects)
+		//	{
+		//		if (I.GetComponent<MeshRenderer>())
+		//		{
+		//			I.GetComponent<MeshRenderer>().material = ApplyMaterial;
+		//		}
+
+		//		if (I.GetComponentInChildren<MeshRenderer>())
+		//		{
+		//			I.GetComponentInChildren<MeshRenderer>().material = ApplyMaterial;
+		//		}
+		//	}
+		//}
+
+
+
+
+
+
+
+
+
+	}
+
 }

@@ -83,6 +83,21 @@ public class MeshMaterialTool : EditorWindow
 							Mats[Mats.Length - 1] = Mat;
 						}
 					}
+					else if (I.GetComponentInChildren<MeshRenderer>())
+					{
+						foreach (Material Mat in I.GetComponentInChildren<MeshRenderer>().sharedMaterials)
+						{
+							if (Mats[0] != null)
+							{
+								// Makes the Array 1 Bigger
+								Material[] TempArray = new Material[Mats.Length + 1];
+								Mats.CopyTo(TempArray, 0);
+								Mats = TempArray;
+							}
+
+							Mats[Mats.Length - 1] = Mat;
+						}
+					}
 				}
 			}
 			else
@@ -92,6 +107,27 @@ public class MeshMaterialTool : EditorWindow
 					if (I.GetComponent<MeshRenderer>())
 					{
 						foreach (Material Mat in I.GetComponent<MeshRenderer>().sharedMaterials)
+						{
+							for (int i = 0; i < Mats.Length; i++)
+							{
+								if (!ArrayUtility.Contains(Mats, Mat))
+								{
+									if (Mats[0] != null)
+									{
+										// Makes the Array 1 Bigger
+										Material[] TempArray = new Material[Mats.Length + 1];
+										Mats.CopyTo(TempArray, 0);
+										Mats = TempArray;
+									}
+
+									Mats[Mats.Length - 1] = Mat;
+								}
+							}
+						}
+					}
+					else if (I.GetComponentInChildren<MeshRenderer>())
+					{
+						foreach (Material Mat in I.GetComponentInChildren<MeshRenderer>().sharedMaterials)
 						{
 							for (int i = 0; i < Mats.Length; i++)
 							{
@@ -151,6 +187,13 @@ public class MeshMaterialTool : EditorWindow
 				{
 					ApplyToSelection(I.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
 				}
+				else if (I.GetComponentInChildren<MeshRenderer>())
+				{
+					foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+					{
+						ApplyToSelection(Mesh.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
+					}
+				}
 			}
 
 
@@ -202,6 +245,13 @@ public class MeshMaterialTool : EditorWindow
 			if (I.GetComponent<MeshRenderer>())
 			{
 				I.GetComponent<MeshRenderer>().sharedMaterials = SelectMats;
+			}
+			else if (I.GetComponentInChildren<MeshRenderer>())
+			{
+				foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+				{
+					Mesh.GetComponentInChildren<MeshRenderer>().sharedMaterials = SelectMats;
+				}
 			}
 		}
 	}

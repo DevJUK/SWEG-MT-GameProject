@@ -41,7 +41,7 @@ public class Entity : MonoBehaviour
         {
             anim.SetBool("IsCrouching", true);
             MovementSpeed = SneekSpeed;
-
+        
             AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);
             if (isCrouching)
             {
@@ -53,6 +53,10 @@ public class Entity : MonoBehaviour
                     col.center = new Vector3(col.center.x, centery, col.center.z);
                 }
             }
+            else
+            {
+                MovementSpeed = WalkSpeed;
+            }
             if (Input.GetKey(KeyCode.W))
             {
                 anim.SetBool("IsCrouchWalk", true);
@@ -63,8 +67,7 @@ public class Entity : MonoBehaviour
             }
         }
         else
-        {
-            MovementSpeed = WalkSpeed;
+        {            
             anim.SetBool("IsCrouching", false);
             col.height = startColliderHeight;
             float centery = col.height / 2;
@@ -83,6 +86,8 @@ public class Entity : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                Debug.Log("running");
+                Debug.Log(MovementSpeed);
                 MovementSpeed = SprintSpeed;
 
                 anim.SetBool("IsRunning", true);               
@@ -96,9 +101,9 @@ public class Entity : MonoBehaviour
             {
                 isCrouching = true;
                 MovementSpeed = SneekSpeed;
-
+            
                 anim.SetBool("IsCrouchWalk", true);
-
+            
                 AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);
                 if (isCrouching)
                 {
@@ -109,69 +114,74 @@ public class Entity : MonoBehaviour
                         float centery = col.height / 2;
                         col.center = new Vector3(col.center.x, centery, col.center.z);
                     }
-                }                
+                }
+                else
+                {
+                    MovementSpeed = WalkSpeed;
+                    
+                }
             }
             else
             {
-                MovementSpeed = WalkSpeed;
                 anim.SetBool("IsCrouchWalk", false);
                 col.height = startColliderHeight;
                 float centery = col.height / 2;
                 col.center = new Vector3(col.center.x, centery, col.center.z);
             }
+            
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                MovementSpeed = WalkSpeed;
-
-                anim.SetBool("IsWalking", false);
-                anim.SetBool("IsWalkingL", true);
-
-
-            }
-            else
-            {
-                anim.SetBool("IsWalking", true);
-                anim.SetBool("IsWalkingL", false);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                MovementSpeed = WalkSpeed;
-
-                anim.SetBool("IsWalking", false);
-                anim.SetBool("IsWalkingR", true);
-
-
-            }
-            else
-            {
-                anim.SetBool("IsWalking", true);
-                anim.SetBool("IsWalkingR", false);
-            }
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    MovementSpeed = WalkSpeed;
+            //
+            //    anim.SetBool("IsWalking", false);
+            //    anim.SetBool("IsWalkingL", true);
+            //
+            //
+            //}
+            //else
+            //{
+            //    anim.SetBool("IsWalking", true);
+            //    anim.SetBool("IsWalkingL", false);
+            //}
+            //
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    MovementSpeed = WalkSpeed;
+            //
+            //    anim.SetBool("IsWalking", false);
+            //    anim.SetBool("IsWalkingR", true);
+            //
+            //
+            //}
+            //else
+            //{
+            //    anim.SetBool("IsWalking", true);
+            //    anim.SetBool("IsWalkingR", false);
+            //}
         }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            Moving = true;
-
-            anim.SetBool("IsWalkingL", true);
-
-            Vector3 Vec;
-            Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-
-            Rigid.velocity = Vec * SpeedModifier;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            Moving = true;
-
-            anim.SetBool("IsWalkingR", true);
-
-            Vector3 Vec;
-            Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-
-            Rigid.velocity = Vec * SpeedModifier;
-        }
+        //else if (Input.GetKey(KeyCode.A))
+        //{
+        //    Moving = true;
+        //
+        //    anim.SetBool("IsWalkingL", true);
+        //
+        //    Vector3 Vec;
+        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
+        //
+        //    Rigid.velocity = Vec * SpeedModifier;
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    Moving = true;
+        //
+        //    anim.SetBool("IsWalkingR", true);
+        //
+        //    Vector3 Vec;
+        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
+        //
+        //    Rigid.velocity = Vec * SpeedModifier;
+        //}
 
 
         //if(Input.GetKey(KeyCode.Space))

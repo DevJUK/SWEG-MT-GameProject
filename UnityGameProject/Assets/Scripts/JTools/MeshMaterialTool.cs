@@ -200,8 +200,11 @@ public class MeshMaterialTool : EditorWindow
 			ClearArray(Mats);
 			ClearArray(SelectMats);
 
-			ResetArraySize(Mats);
-			ResetArraySize(SelectMats);
+			Material[] TempArray = new Material[0];
+			Mats = TempArray;
+
+			Material[] TempArrayV2 = new Material[0];
+			SelectMats = TempArrayV2;
 		}
 	}
 
@@ -216,14 +219,6 @@ public class MeshMaterialTool : EditorWindow
 		{
 			Array[i] = null;
 		}
-	}
-
-	
-	private void ResetArraySize(Material[] InputArray)
-	{
-		// Makes the Array 1 Bigger
-		Material[] TempArray = new Material[0];
-		InputArray = TempArray;
 	}
 
 

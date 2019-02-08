@@ -37,76 +37,76 @@ public class TutorialPrompts : MonoBehaviour
 
     void Update()
     {
-        if (Wpress = false)
+        if (Wpress == false)
         {
-            WpressText.text("To walk forward press 'W'");
+            WpressText.text = "To walk forward press 'W'";
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Wpress == true;
+            Wpress = true;
         }
 
-        if (Wpress = true)
+        if (Wpress == true)
         {
-            SpressText.text("To walk backwards press 'S'");
+            SpressText.text = "To walk backwards press 'S'";
         }
         if(Input.GetKeyDown(KeyCode.S))
         {
-            Spress == true;
+            Spress = true;
         }
 
-        if (Spress = true)
+        if (Spress == true)
         {
-            ApressText.text("To side step left press 'A'");
+            ApressText.text = "To side step left press 'A'";
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Apress == true;
+            Apress = true;
         }
 
-        if (Apress = true)
+        if (Apress == true)
         {
-            DpressText.text("To side step right press 'D'");
+            DpressText.text = "To side step right press 'D'";
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Dpress == true;
+            Dpress = true;
         }
 
-        if (Dpress = true)
+        if (Dpress == true)
         {
-            LCTRLpressText.text("To crouch press 'Left Control'");
+            LCTRLpressText.text = "To crouch press 'Left Control'";
         }
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
-            LCTRLpress == true;
+            LCTRLpress = true;
         }
 
-        if (LCTRLpress = true)
+        if (LCTRLpress == true)
         {
-            LSHIFTpressText.text("To Sprint press 'Left Shift' while moving forward");
+            LSHIFTpressText.text = "To Sprint press 'Left Shift' while moving forward";
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift)) + (Input.GetKeyDown(KeyCode.W));
+        if ((Input.GetKeyDown(KeyCode.LeftShift)) && (Input.GetKeyDown(KeyCode.W)))
         {
-            LSHIFTpress == true;
+            LSHIFTpress = true;
         }
 
-        if (LSHIFTpress = true)
+        if (LSHIFTpress == true)
         {
-            IpressText.text("To open your inventory press 'I'");
+            IpressText.text = "To open your inventory press 'I'";
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Ipress == true;
+            Ipress = true;
         }
 
-        if (Ipress = true)
+        if (Ipress == true)
         {
-            EpressText.text("To interact with an item press 'E;");
+            EpressText.text = "To interact with an item press 'E;";
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Epress == true;
+            Epress = true;
         }
     }
 }

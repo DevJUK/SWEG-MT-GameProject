@@ -70,17 +70,17 @@ public class DialogueScrpt : MonoBehaviour
                 EndOfDialogueBlock();
                 Debug.Log("End");
             }
-            else if (DialogueValue.Contains("#Break#"))
+            else if (DialogueValue.Contains("#Break#")) // creates a break in the dialogue
             {
                 BreakInDialogue();
                 Debug.Log("Break");
             }
-            else if (DialogueValue == "#Pause#")
-            {
-                DialoguePause = true;
-                Debug.Log("Pause");
-            }
-            else if (DialogueValue.Contains("#LP:"))
+            //else if (DialogueValue == "#Pause#")
+            //{
+            //    DialoguePause = true;
+            //    Debug.Log("Pause");
+            //}
+            else if (DialogueValue.Contains("#LP:")) // Loop back to set point in dialogue
             {
 
                 int NewLoop = System.Convert.ToInt16(DialogueValue.Remove(0, 4));

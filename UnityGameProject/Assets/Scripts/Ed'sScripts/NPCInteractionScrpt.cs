@@ -15,4 +15,9 @@ public class NPCInteractionScrpt : MonoBehaviour
     {
         
     }
+
+    public void StartInteraction()
+    {
+
+    }
 }

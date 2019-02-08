@@ -20,6 +20,8 @@ public class MeshMaterialTool : EditorWindow
 	public int SelectElementLength;
 
 
+	private bool IfApplyPressed;
+
 
 	[MenuItem("Window/MeshMaterialEditor #M")]
 	public static void ShowWindow()
@@ -259,8 +261,8 @@ public class MeshMaterialTool : EditorWindow
 		SerializedObject SO = new SerializedObject(Target);
 		SerializedProperty Array = SO.FindProperty("Mats");
 
-		EditorGUILayout.PropertyField(Array, true);
-		SO.ApplyModifiedProperties();
+		EditorGUILayout.PropertyField(Array, new GUIContent("Found Materials"), true);
+		SO.ApplyModifiedProperties(); 
 		// end of bit of code that does the thing stated above
 
 		GUI.color = Color.yellow;
@@ -270,7 +272,7 @@ public class MeshMaterialTool : EditorWindow
 		SerializedObject SO2 = new SerializedObject(Target2);
 		SerializedProperty Array2 = SO2.FindProperty("SelectMats");
 
-		EditorGUILayout.PropertyField(Array2, true);
+		EditorGUILayout.PropertyField(Array2, new GUIContent("Materials To Apply"), true);
 		SO2.ApplyModifiedProperties();
 		// end of bit of code that does the thing stated above
 	}
@@ -278,17 +280,24 @@ public class MeshMaterialTool : EditorWindow
 
 	private void ApplyButton()
 	{
-		foreach (GameObject I in Selection.gameObjects)
+		if (SelectMats != null)
 		{
-			if (I.GetComponent<MeshRenderer>())
+			foreach (GameObject I in Selection.gameObjects)
 			{
-				ApplyToSelection(I.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
-			}
-			else if (I.GetComponentInChildren<MeshRenderer>())
-			{
-				foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+				if (I.GetComponent<MeshRenderer>())
 				{
-					ApplyToSelection(Mesh.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
+					ApplyToSelection(I.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
+
+					IfApplyPressed = true;
+				}
+				else if (I.GetComponentInChildren<MeshRenderer>())
+				{
+					foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+					{
+						ApplyToSelection(Mesh.GetComponent<MeshRenderer>().sharedMaterials, SelectMats);
+
+						IfApplyPressed = true;
+					}
 				}
 			}
 		}
@@ -307,17 +316,27 @@ public class MeshMaterialTool : EditorWindow
 
 	private void UndoButton()
 	{
-		foreach (GameObject I in Selection.gameObjects)
+		if (IfApplyPressed)
 		{
-			if (I.GetComponent<MeshRenderer>())
+			if (UndoMats != null)
 			{
-				UndoMaterials(I.GetComponent<MeshRenderer>().sharedMaterials, UndoMats);
-			}
-			else if (I.GetComponentInChildren<MeshRenderer>())
-			{
-				foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+				foreach (GameObject I in Selection.gameObjects)
 				{
-					UndoMaterials(Mesh.GetComponent<MeshRenderer>().sharedMaterials, UndoMats);
+					if (I.GetComponent<MeshRenderer>())
+					{
+						UndoMaterials(I.GetComponent<MeshRenderer>().sharedMaterials, UndoMats);
+
+						IfApplyPressed = false;
+					}
+					else if (I.GetComponentInChildren<MeshRenderer>())
+					{
+						foreach (MeshRenderer Mesh in I.GetComponentsInChildren<MeshRenderer>())
+						{
+							UndoMaterials(Mesh.GetComponent<MeshRenderer>().sharedMaterials, UndoMats);
+
+							IfApplyPressed = false;
+						}
+					}
 				}
 			}
 		}

@@ -9,10 +9,17 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 MoveDir;
 
+	// Jonathan Stats Stuff
+	private Stats StatsScript;
+
 	// Use this for initialization
 	void Start ()
     {
         This = GetComponent<Entity>();
+
+		// Jonathan Stats Stuff
+		StatsScript = GetComponent<Stats>();
+		StatsScript.CustomSetup(10, 10, 3, 4, 5, 4, 3, 3);
 	}
 	
 	// Update is called once per frame

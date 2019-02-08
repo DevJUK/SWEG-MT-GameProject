@@ -31,7 +31,7 @@ public class RaycastItems : MonoBehaviour
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
             {
-                NPCInteractionScrpt.StartInteraction();
+                //NPCInteractionScrpt.StartInteraction();
             }
             else // if item do this
             {

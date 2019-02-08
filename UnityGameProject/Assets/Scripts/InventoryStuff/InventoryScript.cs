@@ -27,13 +27,11 @@ public class InventoryScript : MonoBehaviour
 	public PointerEventData PointerEvent;
 	public EventSystem Events;
 
-
-	internal Item ArrayItem;
-
 	public int NumberOfPresses;
 	public GameObject ItemDetailPrefab;
 	internal bool PanelOpen;
 	private bool PrefabMade;
+
 
 	private void Start()
 	{
@@ -44,13 +42,9 @@ public class InventoryScript : MonoBehaviour
 	void Update()
 	{
 		PointerEvent = new PointerEventData(Events);                        // Set up a new PointerEvent
-
 		PointerEvent.position = Input.mousePosition;                        // Set up the PointerEvent to be where the mouse is
-
 		List<RaycastResult> Results = new List<RaycastResult>();            // Creating a list to store the raycase information
-
 		Ray.Raycast(PointerEvent, Results);
-
 
 		if (Input.GetMouseButtonDown(0))                                    // If right click is pressed
 		{
@@ -60,10 +54,8 @@ public class InventoryScript : MonoBehaviour
 				{
 					if (NumberOfPresses == 2)
 					{
-
 						OpenItem();
 						NumberOfPresses = 0;
-
 					}
 					else
 					{
@@ -90,7 +82,6 @@ public class InventoryScript : MonoBehaviour
 									}
 								}
 							}
-
 							NumberOfPresses++;
 						}
 					}

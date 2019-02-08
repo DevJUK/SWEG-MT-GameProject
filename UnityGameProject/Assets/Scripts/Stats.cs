@@ -42,7 +42,7 @@ public class Stats : MonoBehaviour
 		Charisma = 1;
 	}
 
-	
+
 	// Used to setup the stats of a player or NPC to the entered values
 	internal void CustomSetup(int HealthValue, int SanityValue, int StrValue, int AglValue, int IntValue, int WilValue, int PerValue, int ChaValue)
 	{

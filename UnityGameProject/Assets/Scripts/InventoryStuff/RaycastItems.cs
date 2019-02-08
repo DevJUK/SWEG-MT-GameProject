@@ -10,6 +10,7 @@ public class RaycastItems : MonoBehaviour
 
 	private PickupUIText PickupScript;
 
+    public NPCInteractionScrpt NPCInteractionScrpt;
 
 	private void Start()
 	{
@@ -22,27 +23,38 @@ public class RaycastItems : MonoBehaviour
 	private void FixedUpdate()
 	{
 		RaycastHit Hit;
+        
 
-		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range))
+
+		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
-			if (Input.GetButtonDown("Pickup"))
-			{
-				AddHitToInv(Hit);
-			}
+            // Check to see if hit object is a npc or item
+            if (Hit.transform.tag == "NPC") // if npc do this
+            {
+                NPCInteractionScrpt.StartInteraction();
+            }
+            else // if item do this
+            {
+                if (Input.GetButtonDown("Pickup"))
+                {
+                    AddHitToInv(Hit);
+                }
 
-			if (Hit.transform.gameObject.GetComponent<Item>())
-			{
-				PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName);
-			}
+                if (Hit.transform.gameObject.GetComponent<Item>())
+                {
+                    PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName);
+                }
 
-			UIOpen = true;
+                UIOpen = true;
+            }
+
 		}
 		else
 		{
 			UIOpen = false;
 		}
 
-		InRangeUI();
+		InRangeUI(); // if looking at an item then show ui
 	}
 
 

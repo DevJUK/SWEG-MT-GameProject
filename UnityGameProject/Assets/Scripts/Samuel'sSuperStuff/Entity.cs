@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
-{
+{    
     public float MovementSpeed;
     public float WalkSpeed = 2;
     public float SneekSpeed = 1;
@@ -99,6 +99,7 @@ public class Entity : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftControl))
             {
+                
                 isCrouching = true;
                 MovementSpeed = SneekSpeed;
             
@@ -160,28 +161,28 @@ public class Entity : MonoBehaviour
             //    anim.SetBool("IsWalkingR", false);
             //}
         }
-        //else if (Input.GetKey(KeyCode.A))
-        //{
-        //    Moving = true;
-        //
-        //    anim.SetBool("IsWalkingL", true);
-        //
-        //    Vector3 Vec;
-        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-        //
-        //    Rigid.velocity = Vec * SpeedModifier;
-        //}
-        //else if (Input.GetKey(KeyCode.D))
-        //{
-        //    Moving = true;
-        //
-        //    anim.SetBool("IsWalkingR", true);
-        //
-        //    Vector3 Vec;
-        //    Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
-        //
-        //    Rigid.velocity = Vec * SpeedModifier;
-        //}
+        else if (Input.GetKey(KeyCode.A))
+        {
+            Moving = true;
+        
+            anim.SetBool("IsWalkingL", true);
+        
+            Vector3 Vec;
+            Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
+        
+            Rigid.velocity = Vec * SpeedModifier;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            Moving = true;
+        
+            anim.SetBool("IsWalkingR", true);
+        
+            Vector3 Vec;
+            Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
+        
+            Rigid.velocity = Vec * SpeedModifier;
+        }
 
 
         //if(Input.GetKey(KeyCode.Space))
@@ -205,8 +206,7 @@ public class Entity : MonoBehaviour
        {
             Rigid.AddForce(Vector3.up * JumpStrength);
        }
-    }
-
+    }    
 
     public bool OnGround()
     {
@@ -219,9 +219,4 @@ public class Entity : MonoBehaviour
     {
         return WalkSpeed;
     }
-
-    
-
-    
-
 }

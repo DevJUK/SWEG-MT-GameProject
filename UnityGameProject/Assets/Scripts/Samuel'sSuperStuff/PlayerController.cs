@@ -25,13 +25,15 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-            MoveDir = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            MoveDir = transform.TransformDirection(MoveDir);            
+         MoveDir = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+         MoveDir = transform.TransformDirection(MoveDir);            
 
-            if (Input.GetButton("Jump"))
-            {
-                This.Jump();
-            }     
+       
+
+         if (Input.GetButton("Jump"))
+         {
+             This.Jump();
+         }     
 
         This.Move(MoveDir);
         //This.CallyMove(MoveDir);

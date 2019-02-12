@@ -61,11 +61,6 @@ public class Mouse_Move : MonoBehaviour
 				Cam.localEulerAngles = new Vector3(rotationY, Cam.rotation.y, 0);
 				transform.localEulerAngles = new Vector3(transform.rotation.x, rotationX, 0);
 			}
-
-
-
-
-
 		}
 	}
 }

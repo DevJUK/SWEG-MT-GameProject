@@ -17,4 +17,9 @@ public class PickupUIText : MonoBehaviour
 		text.text = "(" + itemname + ")" + " | Pickup Item (e)";
 	}
 
+	public void BlankText()
+	{
+		text.text = "";
+	}
+
 }

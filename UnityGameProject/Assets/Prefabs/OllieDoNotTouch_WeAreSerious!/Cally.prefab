@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 3427218183789735630}
   m_Layer: 0
   m_Name: Cally V1 Model@Idle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1827,7 +1827,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25898957
+  m_Radius: 0.3
   m_Height: 1.6453538
   m_Direction: 1
   m_Center: {x: 0, y: 0.8242419, z: 0}
@@ -3009,6 +3009,7 @@ GameObject:
   - component: {fileID: 3988230728418847857}
   - component: {fileID: 3988230728418847859}
   - component: {fileID: 3988230728418847856}
+  - component: {fileID: 1530175080}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3081,6 +3082,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3988230728418847862}
   m_Enabled: 1
+--- !u!114 &1530175080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3988230728418847862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed091e75a6526140900864a141ef5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 10
+  UI: {fileID: 0}
+  NPCInteractionScrpt: {fileID: 0}
 --- !u!1 &3988230730172607647
 GameObject:
   m_ObjectHideFlags: 0

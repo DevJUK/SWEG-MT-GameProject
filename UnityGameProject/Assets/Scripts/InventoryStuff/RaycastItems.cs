@@ -38,15 +38,25 @@ public class RaycastItems : MonoBehaviour
             }
             else // if item do this
             {
-                if (Input.GetButtonDown("Pickup"))
-                {
-                    AddHitToInv(Hit);
-                }
+				if (Input.GetButtonDown("Pickup"))
+				{
+					AddHitToInv(Hit);
+				}
 
-                if (Hit.transform.gameObject.GetComponent<Item>())
-                {
-                    PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName);
-                }
+				if (Hit.transform.gameObject.GetComponent<Item>())
+				{
+					if (UI.activeInHierarchy)
+					{
+						PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName);
+					}
+				}
+				else
+				{
+					if (UI.activeInHierarchy)
+					{
+						PickupScript.BlankText();
+					}
+				}
 
                 UIOpen = true;
             }
@@ -67,6 +77,9 @@ public class RaycastItems : MonoBehaviour
 		if (Hit.transform.gameObject.GetComponent<Item>())
 		{
 			Hit.transform.gameObject.GetComponent<Item>().AddToInv(Hit.transform.gameObject.GetComponent<Item>());
+			Hit.transform.gameObject.transform.SetParent(GameObject.Find("InvItems").transform);
+			Hit.transform.gameObject.SetActive(false);
+			PickupScript.BlankText();
 		}
 	}
 

@@ -1,55 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &1344801186198254782
+--- !u!65 &2243498837806932712
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344801186198286877}
+  m_GameObject: {fileID: 1700583695073672439}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.54, y: 2.5400007, z: 0.25400007}
   m_Center: {x: 0, y: 0, z: 0.12700003}
---- !u!1 &1970862137603821372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6471222497959211152}
-  m_Layer: 0
-  m_Name: Floorx4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6471222497959211152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970862137603821372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.97, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1344801186197859901}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1344801186198254781
+--- !u!1001 &1700583695073573463
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6471222497959211152}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 100000, guid: 7ac58fb519725944abcbff90293c45bb, type: 3}
       propertyPath: m_Name
@@ -113,15 +82,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2cc34ecd899f299458cfffee6d04c7d8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac58fb519725944abcbff90293c45bb, type: 3}
---- !u!1 &1344801186198286877 stripped
+--- !u!1 &1700583695073672439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 7ac58fb519725944abcbff90293c45bb,
     type: 3}
-  m_PrefabInstance: {fileID: 1344801186198254781}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1344801186197859901 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 7ac58fb519725944abcbff90293c45bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1344801186198254781}
+  m_PrefabInstance: {fileID: 1700583695073573463}
   m_PrefabAsset: {fileID: 0}

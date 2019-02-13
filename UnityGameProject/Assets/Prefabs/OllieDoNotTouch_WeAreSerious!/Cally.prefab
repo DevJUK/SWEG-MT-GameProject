@@ -1386,6 +1386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3427218183789769445}
+  - {fileID: 3988230728418847857}
   m_Father: {fileID: 3427218183789769383}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1636,8 +1637,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3988230728418847857}
+  m_Children: []
   m_Father: {fileID: 3427218183789769455}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1783,6 +1783,7 @@ MonoBehaviour:
   WalkSpeed: 2.5
   SneekSpeed: 1
   SprintSpeed: 5
+  startColliderHeight: 0
   JumpStrength: 0
   SpeedModifier: 1
 --- !u!114 &3427218183789735626
@@ -3022,13 +3023,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3988230728418847862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.535, z: 0.126}
+  m_LocalRotation: {x: 0.09324572, y: -0.021686211, z: 0.01220235, w: 0.9953322}
+  m_LocalPosition: {x: -0.0112577565, y: 0.07109148, z: 0.22339398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2445166617392136142}
-  m_Father: {fileID: 3427218183789769453}
-  m_RootOrder: 0
+  m_Father: {fileID: 3427218183789769447}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &3988230728418847859
 Camera:

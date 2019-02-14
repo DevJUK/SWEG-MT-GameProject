@@ -122,6 +122,7 @@ public class NPCInteractionScrpt : MonoBehaviour
                     StartingDialoguePath = NPCDialogueScrpt.NPCsStartingDiologuePath; // If it is the first conversation with the NPC then just use the NPC start point
                 }
             }
+            ReadDialogue();
         }
     }
 
@@ -147,12 +148,14 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void ReadDialogue() // Used to ditermine what to do i.e. print text or act on in text logic
     {
-        if (DialogueValue == "#End#") // #End# used to signify end of dialogue
+        Debug.Log("Read Dialogue");
+
+        if (DialogueValue == "#End#") // Ends dialogue (use at the very end of dialogue to stop errors)
         {
             EndOfDialogueBlock();
             Debug.Log("End");
         }
-        else if (DialogueValue.Contains("#Break#")) // Creates a break in the dialogue
+        else if (DialogueValue.Contains("#Break#")) // Creates a break in the dialogue (use for whole new conversations i.e after the player walks off and does something)
         {
             BreakInDialogue();
             Debug.Log("Break");
@@ -179,10 +182,17 @@ public class NPCInteractionScrpt : MonoBehaviour
             Debug.Log("Switch Speaker");
             CurrentNPCDialoguePath++;
         }
+
+        else
+        {
+
+            PrintDialogue();
+        }
     }
 
     public void PrintDialogue()
     {
+        Debug.Log("Print Dialogue");
         if (PlayerTalking)
         {
             if (PrintSentenceInOneGo)
@@ -209,12 +219,14 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void PrintFullSentencePlayer()
     {
+        Debug.Log("Print Full Sentence Player");
         // Prints the full line of dialogue in one go
         DialogueBox.text = PlayerDialogue[DialoguePath];
     }
 
     IEnumerator TypewriterPrintPlayer() // Runs through each character individually and prints them with a pause between each one
     {
+        Debug.Log("Typewriter print Player");
         for (int CharNo = 0; CharNo < (PlayerDialogue[DialoguePath].Length + 1); CharNo++)
         {
             DialogueBox.text = PlayerDialogue[DialoguePath].Substring(0, CharNo);
@@ -229,12 +241,14 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void PrintFullSentenceNPC()
     {
+        Debug.Log("Print Full Sentence NPC");
         // Prints the full line of dialogue in one go
         DialogueBox.text = NPCDialogueScrpt.NPCDialogue[DialoguePath];
     }
 
     IEnumerator TypewriterPrintNPC() // Runs through each character individually and prints them with a pause between each one
     {
+        Debug.Log("Typewriter print NPC");
         for (int CharNo = 0; CharNo < (NPCDialogueScrpt.NPCDialogue[DialoguePath].Length + 1); CharNo++)
         {
             DialogueBox.text = NPCDialogueScrpt.NPCDialogue[DialoguePath].Substring(0, CharNo);
@@ -249,6 +263,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void EndOfDialogueBlock()
     {
+        Debug.Log("End of dialogue");
         LastDialoguePath = DialoguePath;
         Interacting = false;
         DialogueBox.text = "";

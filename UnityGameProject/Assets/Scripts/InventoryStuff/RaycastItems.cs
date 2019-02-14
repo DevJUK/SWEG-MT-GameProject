@@ -10,7 +10,10 @@ public class RaycastItems : MonoBehaviour
 
 	private PickupUIText PickupScript;
 
-    public NPCInteractionScrpt NPCInteractionScrpt;
+    // Anything to do with NPC's in this script was done by Ed so talk to him
+
+    public NPCInteractionScrpt NPCInteractionScrpt; // the main controll script for npc dialogue interactions
+    public string NameofNPCHit; // Used to send the name of the NPC to the NPC interaction script
 
 	private void Start()
 	{
@@ -31,15 +34,17 @@ public class RaycastItems : MonoBehaviour
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
             {
-                if (Input.GetButtonDown("Pickup"))
+                NameofNPCHit = Hit.transform.name; // getting the name of the NPC hit 
+
+                if (Input.GetButtonDown("Pickup")) // E Key
                 {
                     NPCInteractionScrpt.StartInteraction();
                 }
             }
             else // if item do this
             {
-				if (Input.GetButtonDown("Pickup"))
-				{
+				if (Input.GetButtonDown("Pickup")) // E Key
+                {
 					AddHitToInv(Hit);
 				}
 

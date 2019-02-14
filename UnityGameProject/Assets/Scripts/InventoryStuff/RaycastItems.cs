@@ -20,6 +20,9 @@ public class RaycastItems : MonoBehaviour
 		PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
 
 		InRangeUI();
+
+        
+        
 	}
 
 
@@ -34,7 +37,11 @@ public class RaycastItems : MonoBehaviour
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
             {
+                // May need to change Name of model when using in actual game
+                NPCInteractionScrpt = GameObject.Find("Cally V1 Model@Idle").GetComponent<NPCInteractionScrpt>();
+
                 NameofNPCHit = Hit.transform.name; // getting the name of the NPC hit 
+                Debug.Log("Raycast Hitting NPC");
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {

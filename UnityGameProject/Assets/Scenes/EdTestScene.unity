@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.size
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
@@ -271,36 +271,51 @@ PrefabInstance:
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[0]
-      value: My name is Miranda
+      value: '#PS:1'
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[1]
-      value: Whats yours?
+      value: My name is Miranda
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[2]
-      value: '#Switch'
+      value: Whats yours?
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[3]
-      value: '#Landing'
+      value: '#PS:2'
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[4]
-      value: 'Hi cally '
+      value: '#Switch'
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[5]
-      value: Nice to meet you
+      value: '#Landing'
       objectReference: {fileID: 0}
     - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
         type: 3}
       propertyPath: NPCDialogue.Array.data[6]
+      value: '#PS:4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
+        type: 3}
+      propertyPath: NPCDialogue.Array.data[7]
+      value: 'Hi cally '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
+        type: 3}
+      propertyPath: NPCDialogue.Array.data[8]
+      value: Nice to meet you
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006297043149582006, guid: 9497d69a49824da42943a230fe80a8a3,
+        type: 3}
+      propertyPath: NPCDialogue.Array.data[9]
       value: '#End'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -799,6 +814,11 @@ PrefabInstance:
       propertyPath: NewConversation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: AudioManager
+      value: 
+      objectReference: {fileID: 1291521810}
     - target: {fileID: 7058577646080652952, guid: 4cdfc878f53e5364e9d51311cb3f0297,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1462,6 +1482,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7592acd9b59102047bbd97f1ef79ae94, type: 3}
+--- !u!114 &1291521810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4859307757478070824, guid: d82e5777458da41498859d17f0fa068b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4859307756596544826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef7b5c9adc2353459085562b332ecdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1358261158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2021,81 @@ CapsuleCollider:
   m_Height: 1.6487379
   m_Direction: 1
   m_Center: {x: 0, y: 0.8213222, z: 0}
+--- !u!1001 &4859307756596544826
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4859307757478070827, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.468752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04356122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 34.211502
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070825, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859307757478070824, guid: d82e5777458da41498859d17f0fa068b,
+        type: 3}
+      propertyPath: Sound_Prefab
+      value: 
+      objectReference: {fileID: 3907468570013577868, guid: b1553d0d1c7fb45479914452be3ebacc,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d82e5777458da41498859d17f0fa068b, type: 3}
 --- !u!1 &4957315644878729602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4957315644878729602, guid: b8ad9c76aa185a64898348ea11ce51cf,
@@ -2012,9 +2119,12 @@ MonoBehaviour:
   PlayersStartingDiologuePath: 4
   NPCsStartingDiologuePath: 0
   NPCDialogue:
+  - '#PS:2'
   - Excuse me, could you tell me where...
   - '#Switch'
+  - Ughh Every time
   - '#Landing'
+  - '#PS:2'
   - Ughh Every time
   - Oh well on to the next one
   - '#End'

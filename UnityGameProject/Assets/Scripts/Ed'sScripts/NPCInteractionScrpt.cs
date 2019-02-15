@@ -10,6 +10,9 @@ public class NPCInteractionScrpt : MonoBehaviour
     [Tooltip("Is the player interacting with the NPC")]
     public bool Interacting;
 
+    [Header("Audio Manager")]
+    public AudioManager AudioManager;
+
     // The canvas that will hold all of the text boxes for dialogue
     [Header("Canvas")]
     [Tooltip("The canvas that will hold all of the text boxes for dialogue")]
@@ -208,10 +211,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
             else if (DialogueValue.Contains("#PS:")) // Use the audio manager to play a sound (Put sound Index number after : ) (Note PS == Play Sound)
             {
-                int SoundIndexNo = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
-                // Audiomanager.playsound(SoundIndexNo) ++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Add stuff here when audio manager added) +++++++++++++++++++++++++
-                Debug.Log("Play Sound: " + SoundIndexNo);
-                DialoguePath++;
+                PlaySound();
             }
 
             else if (DialogueValue.Contains("#Switch")) // Used to switch between player and NPC dialogue
@@ -396,5 +396,13 @@ public class NPCInteractionScrpt : MonoBehaviour
                 DialoguePath++;
             }
         }
+    }
+
+    public void PlaySound()
+    {
+        int SoundIndexNo = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
+        AudioManager.PlayClip(SoundIndexNo, 1, 1);
+        Debug.Log("Play Sound: " + SoundIndexNo);
+        DialoguePath++;
     }
 }

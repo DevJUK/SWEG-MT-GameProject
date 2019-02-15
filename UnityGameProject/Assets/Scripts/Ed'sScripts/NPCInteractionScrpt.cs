@@ -10,16 +10,16 @@ public class NPCInteractionScrpt : MonoBehaviour
     [Tooltip("Is the player interacting with the NPC")]
     public bool Interacting;
 
+    // The canvas that will hold all of the text boxes for dialogue
+    [Header("Canvas")]
+    [Tooltip("The canvas that will hold all of the text boxes for dialogue")]
+    public GameObject InteractionCanvas;
+
     // Dictates who starts talking first in conversation
     [Header("Whos talking first")]
     [Tooltip("If true the player is talking first. If false the NPC will talk first")]
     public bool PlayerTalksFirst;
     public bool PlayerTalking;
-
-    // The canvas that will hold all of the text boxes for dialogue
-    [Header("Canvas")]
-    [Tooltip("The canvas that will hold all of the text boxes for dialogue")]
-    public GameObject InteractionCanvas;
 
     // Used to signify whos talking in conversation
     [Header("Whos Talking")]
@@ -69,6 +69,11 @@ public class NPCInteractionScrpt : MonoBehaviour
     public bool EndOfSentence;
     public bool NewConversation;
     public bool PrintingDialogue;
+    public bool FirstSwitch;
+
+    [Header("Initial Line")]
+    public int InitialPlayerLine;
+    public int InitialNPCLine;
 
     void Start()
     {
@@ -94,6 +99,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
             if (ConversationStart)
             {
+                NPCNameSet = false;
                 if (PlayerTalksFirst) // Checking whos dialogue will come up first
                 {
                     WhosTalking.text = PlayerName;
@@ -104,8 +110,12 @@ public class NPCInteractionScrpt : MonoBehaviour
                     WhosTalking.text = NPCName;
                     PlayerTalking = false;
                 }
+                FirstSwitch = true;
+                CurrentNPCDialoguePath = 0;
+                CurrentPlayerDialoguePath = 0;
+
             }
-            
+
             if (PlayerTalking)
             {
                 if (NewConversation) // If this isnt the first conversation with the NPC then start at the last known dialogue path for that npc
@@ -206,22 +216,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
             else if (DialogueValue.Contains("#Switch")) // Used to switch between player and NPC dialogue
             {
-
-                Debug.Log("Switch Speaker");
-                if (PlayerTalking)
-                {
-                    CurrentPlayerDialoguePath = DialoguePath;
-                    PlayerTalking = false;
-                    DialoguePath = CurrentNPCDialoguePath;
-                    DialoguePath++;
-                }
-                else
-                {
-                    CurrentNPCDialoguePath = DialoguePath;
-                    PlayerTalking = true;
-                    DialoguePath = CurrentPlayerDialoguePath;
-                    DialoguePath++;
-                }
+                Switch();
             }
 
             else if (DialogueValue.Contains("#Landing")) // Used as a landing spot for the switch to stop it from flicking back and forth
@@ -337,8 +332,10 @@ public class NPCInteractionScrpt : MonoBehaviour
     {
         Debug.Log("End of dialogue");
         LastDialoguePath = DialoguePath;
+        DialoguePath = 0;
         Interacting = false;
         DialogueBox.text = "";
+        ConversationStart = true;
     }
 
     public void BreakInDialogue()
@@ -357,6 +354,47 @@ public class NPCInteractionScrpt : MonoBehaviour
         {
             DialoguePath++;
             EndOfSentence = false;
+        }
+    }
+
+    public void Switch()
+    {
+        Debug.Log("Switch Speaker");
+        if (FirstSwitch)
+        {
+            if (PlayerTalking)
+            {
+                CurrentPlayerDialoguePath = DialoguePath;
+                PlayerTalking = false;
+                DialoguePath = NPCDialogueScrpt.NPCsStartingDiologuePath;
+                DialoguePath++;
+                FirstSwitch = false;
+            }
+            else
+            {
+                CurrentNPCDialoguePath = DialoguePath;
+                PlayerTalking = true;
+                DialoguePath = NPCDialogueScrpt.PlayersStartingDiologuePath;
+                DialoguePath++;
+                FirstSwitch = false;
+            }
+        }
+        else
+        {
+            if (PlayerTalking)
+            {
+                CurrentPlayerDialoguePath = DialoguePath;
+                PlayerTalking = false;
+                DialoguePath = CurrentNPCDialoguePath;
+                DialoguePath++;
+            }
+            else
+            {
+                CurrentNPCDialoguePath = DialoguePath;
+                PlayerTalking = true;
+                DialoguePath = CurrentPlayerDialoguePath;
+                DialoguePath++;
+            }
         }
     }
 }

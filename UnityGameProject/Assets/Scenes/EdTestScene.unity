@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
         type: 3}
       propertyPath: PlayerDialogue.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
         type: 3}
@@ -762,7 +762,42 @@ PrefabInstance:
     - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
         type: 3}
       propertyPath: PlayerDialogue.Array.data[4]
-      value: boop boop ba doop
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[5]
+      value: AAAAAAH, Its a zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[6]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: FirstSwitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602990843753430231, guid: 4cdfc878f53e5364e9d51311cb3f0297,
+        type: 3}
+      propertyPath: NewConversation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058577646080652952, guid: 4cdfc878f53e5364e9d51311cb3f0297,
         type: 3}
@@ -1954,3 +1989,118 @@ CapsuleCollider:
   m_Height: 1.6487379
   m_Direction: 1
   m_Center: {x: 0, y: 0.8213222, z: 0}
+--- !u!1 &4957315644878729602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4957315644878729602, guid: b8ad9c76aa185a64898348ea11ce51cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5005752731804735675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4957315644878729603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957315644878729602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7dcb5549187e14d925931a1252dd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcIDNumber: 1
+  NPCName: Dave
+  PlayersStartingDiologuePath: 4
+  NPCsStartingDiologuePath: 0
+  NPCDialogue:
+  - Excuse me, could you tell me where...
+  - '#Switch'
+  - '#Landing'
+  - Ughh Every time
+  - Oh well on to the next one
+  - '#End'
+--- !u!1001 &5005752731804735675
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4957315644878729602, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_Name
+      value: copzombie DialogueTester
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957315644878729602, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369930546811269537, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483174332301960019, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053204158931649781, guid: b8ad9c76aa185a64898348ea11ce51cf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4978123698701304603, guid: b8ad9c76aa185a64898348ea11ce51cf, type: 3}
+    - {fileID: 5290475072051831154, guid: b8ad9c76aa185a64898348ea11ce51cf, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b8ad9c76aa185a64898348ea11ce51cf, type: 3}

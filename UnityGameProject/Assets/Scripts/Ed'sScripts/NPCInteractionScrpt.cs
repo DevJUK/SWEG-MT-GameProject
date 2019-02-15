@@ -65,8 +65,10 @@ public class NPCInteractionScrpt : MonoBehaviour
     public float CoroutineDelay;
 
     [Header("Position in Dialogue")]
+    public bool ConversationStart;
     public bool EndOfSentence;
     public bool NewConversation;
+    public bool PrintingDialogue;
 
     void Start()
     {
@@ -74,6 +76,8 @@ public class NPCInteractionScrpt : MonoBehaviour
         DialogueBox.text = "";
 
         RaycastItems = GameObject.Find("Camera").GetComponent<RaycastItems>();
+
+        ConversationStart = true;
     }
 
     void Update()
@@ -85,28 +89,34 @@ public class NPCInteractionScrpt : MonoBehaviour
             if (!NPCNameSet) // If the NPC's name hasnt been set yet then set it
             {
                 NPCName = NPCDialogueScrpt.NPCName;
+                NPCNameSet = true;
             }
 
-            if (PlayerTalksFirst) // Checking whos dialogue will come up first
+            if (ConversationStart)
             {
-                WhosTalking.text = PlayerName;
-                PlayerTalking = true;
+                if (PlayerTalksFirst) // Checking whos dialogue will come up first
+                {
+                    WhosTalking.text = PlayerName;
+                    PlayerTalking = true;
+                }
+                else
+                {
+                    WhosTalking.text = NPCName;
+                    PlayerTalking = false;
+                }
             }
-            else
-            {
-                WhosTalking.text = NPCName;
-                PlayerTalking = false;
-            }
-
+            
             if (PlayerTalking)
             {
                 if (NewConversation) // If this isnt the first conversation with the NPC then start at the last known dialogue path for that npc
                 {
                     StartingDialoguePath = LastDialoguePath;
+                    WhosTalking.text = PlayerName;
                 }
                 else
                 {
                     StartingDialoguePath = NPCDialogueScrpt.PlayersStartingDiologuePath; // If it is the first conversation with the NPC then just use the player start point
+                    WhosTalking.text = PlayerName;
                 }
             }
             else
@@ -115,11 +125,13 @@ public class NPCInteractionScrpt : MonoBehaviour
                 {
                     {
                         StartingDialoguePath = LastDialoguePath;
+                        WhosTalking.text = NPCName;
                     }
                 }
                 else
                 {
                     StartingDialoguePath = NPCDialogueScrpt.NPCsStartingDiologuePath; // If it is the first conversation with the NPC then just use the NPC start point
+                    WhosTalking.text = NPCName;
                 }
             }
             ReadDialogue();
@@ -148,46 +160,82 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void ReadDialogue() // Used to ditermine what to do i.e. print text or act on in text logic
     {
+        ConversationStart = false;
         Debug.Log("Read Dialogue");
 
-        if (DialogueValue == "#End#") // Ends dialogue (use at the very end of dialogue to stop errors)
+        if (PrintingDialogue) // If text is being printed into dialogue box then dont check for logic
         {
-            EndOfDialogueBlock();
-            Debug.Log("End");
-        }
-        else if (DialogueValue.Contains("#Break#")) // Creates a break in the dialogue (use for whole new conversations i.e after the player walks off and does something)
-        {
-            BreakInDialogue();
-            Debug.Log("Break");
-        }
-        
-        else if (DialogueValue.Contains("#LP:")) // Loop back to set point in dialogue (note LP == Loop)
-        {
-            int NewLoop = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
-            StartingDialoguePath = NewLoop;
-            DialoguePath++;
-        }
-
-        else if (DialogueValue.Contains("#PS:")) // Use the audio manager to play a sound (Put sound Index number after : ) (Note PS == Play Sound)
-        {
-            int SoundIndexNo = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
-            // Audiomanager.playsound(SoundIndexNo) ++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Add stuff here when audio manager added) +++++++++++++++++++++++++
-            Debug.Log("Play Sound: " + SoundIndexNo);
-            DialoguePath++;
-        }
-
-        else if (DialogueValue.Contains("#Switch")) // Used to switch between player and NPC dialogue
-        {
-            PlayerTalking = !PlayerTalking;
-            Debug.Log("Switch Speaker");
-            CurrentNPCDialoguePath++;
-        }
-
-        else
-        {
-
             PrintDialogue();
         }
+        else // If text isnt being printed into dialogue box then check for logic
+        {
+            if (PlayerTalking)
+            {
+                DialogueValue = PlayerDialogue[DialoguePath];
+            }
+            else
+            {
+                DialogueValue = NPCDialogueScrpt.NPCDialogue[DialoguePath];
+            }
+            Debug.Log("Check if logic");
+            if (DialogueValue == "#End") // Ends dialogue (use at the very end of dialogue to stop errors)
+            {
+                EndOfDialogueBlock();
+                Debug.Log("End");
+            }
+            else if (DialogueValue.Contains("#Break")) // Creates a break in the dialogue (use for whole new conversations i.e after the player walks off and does something)
+            {
+                BreakInDialogue();
+                Debug.Log("Break");
+            }
+
+            else if (DialogueValue.Contains("#LP:")) // Loop back to set point in dialogue (note LP == Loop)
+            {
+                int NewLoop = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
+                StartingDialoguePath = NewLoop;
+                DialoguePath++;
+            }
+
+            else if (DialogueValue.Contains("#PS:")) // Use the audio manager to play a sound (Put sound Index number after : ) (Note PS == Play Sound)
+            {
+                int SoundIndexNo = System.Convert.ToInt16(DialogueValue.Remove(0, 4));
+                // Audiomanager.playsound(SoundIndexNo) ++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Add stuff here when audio manager added) +++++++++++++++++++++++++
+                Debug.Log("Play Sound: " + SoundIndexNo);
+                DialoguePath++;
+            }
+
+            else if (DialogueValue.Contains("#Switch")) // Used to switch between player and NPC dialogue
+            {
+
+                Debug.Log("Switch Speaker");
+                if (PlayerTalking)
+                {
+                    CurrentPlayerDialoguePath = DialoguePath;
+                    PlayerTalking = false;
+                    DialoguePath = CurrentNPCDialoguePath;
+                    DialoguePath++;
+                }
+                else
+                {
+                    CurrentNPCDialoguePath = DialoguePath;
+                    PlayerTalking = true;
+                    DialoguePath = CurrentPlayerDialoguePath;
+                    DialoguePath++;
+                }
+            }
+
+            else if (DialogueValue.Contains("#Landing")) // Used as a landing spot for the switch to stop it from flicking back and forth
+            {
+                Debug.Log("Landing");
+                DialoguePath++;
+            }
+
+            else
+            {
+                PrintDialogue();
+            }
+        }
+       
     }
 
     public void PrintDialogue()
@@ -195,24 +243,42 @@ public class NPCInteractionScrpt : MonoBehaviour
         Debug.Log("Print Dialogue");
         if (PlayerTalking)
         {
-            if (PrintSentenceInOneGo)
+            if (PrintSentenceInOneGo && !EndOfSentence)
             {
                 PrintFullSentencePlayer();
             }
             else
             {
-                TypewriterPrintPlayer();
+                if (!CoroutineStarted && !EndOfSentence)
+                {
+                    Debug.Log("Typewriter Player");
+                    StartCoroutine(TypewriterPrintPlayer());
+                    CoroutineStarted = true;
+                }
+            }
+            if (EndOfSentence)
+            {
+                ProgressToNextSentence();
             }
         }
         else
         {
-            if (PrintSentenceInOneGo)
+            if (PrintSentenceInOneGo && !EndOfSentence)
             {
                 PrintFullSentenceNPC();
             }
             else
             {
-                TypewriterPrintNPC();
+                if (!CoroutineStarted && !EndOfSentence)
+                {
+                    Debug.Log("Typewriter NPC");
+                    StartCoroutine(TypewriterPrintNPC());
+                    CoroutineStarted = true;
+                }
+            }
+            if (EndOfSentence)
+            {
+                ProgressToNextSentence();
             }
         }
     }
@@ -222,10 +288,12 @@ public class NPCInteractionScrpt : MonoBehaviour
         Debug.Log("Print Full Sentence Player");
         // Prints the full line of dialogue in one go
         DialogueBox.text = PlayerDialogue[DialoguePath];
+        EndOfSentence = true;
     }
 
     IEnumerator TypewriterPrintPlayer() // Runs through each character individually and prints them with a pause between each one
     {
+        PrintingDialogue = true;
         Debug.Log("Typewriter print Player");
         for (int CharNo = 0; CharNo < (PlayerDialogue[DialoguePath].Length + 1); CharNo++)
         {
@@ -237,6 +305,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
         CoroutineStarted = false;
         EndOfSentence = true;
+        PrintingDialogue = false;
     }
 
     public void PrintFullSentenceNPC()
@@ -244,10 +313,12 @@ public class NPCInteractionScrpt : MonoBehaviour
         Debug.Log("Print Full Sentence NPC");
         // Prints the full line of dialogue in one go
         DialogueBox.text = NPCDialogueScrpt.NPCDialogue[DialoguePath];
+        EndOfSentence = true;
     }
 
     IEnumerator TypewriterPrintNPC() // Runs through each character individually and prints them with a pause between each one
     {
+        PrintingDialogue = true;
         Debug.Log("Typewriter print NPC");
         for (int CharNo = 0; CharNo < (NPCDialogueScrpt.NPCDialogue[DialoguePath].Length + 1); CharNo++)
         {
@@ -259,6 +330,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
         CoroutineStarted = false;
         EndOfSentence = true;
+        PrintingDialogue = false;
     }
 
     public void EndOfDialogueBlock()
@@ -276,5 +348,15 @@ public class NPCInteractionScrpt : MonoBehaviour
         Interacting = false;
         NewConversation = true;
         DialogueBox.text = "";
+        ConversationStart = true;
+    }
+
+    public void ProgressToNextSentence()
+    {
+        if( Input.GetMouseButton(0))
+        {
+            DialoguePath++;
+            EndOfSentence = false;
+        }
     }
 }

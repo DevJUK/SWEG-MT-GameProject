@@ -7,6 +7,7 @@ TagManager:
   - player
   - Inventory
   - Pan
+  - NPC
   layers:
   - Default
   - TransparentFX

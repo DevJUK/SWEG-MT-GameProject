@@ -15,6 +15,8 @@ public class Entity : MonoBehaviour
    
     private Rigidbody Rigid;
 
+    public Event_Start Boolon;
+
     Animator anim; //Assigns the animator
 
     private bool StartRotate = true;
@@ -33,11 +35,12 @@ public class Entity : MonoBehaviour
         Rigid = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         startColliderHeight = col.height;
-	}	
-	
+	}
+
     public void Move(Vector3 MoveDir)
     {
-        if(Input.GetKey(KeyCode.LeftControl))
+        
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             anim.SetBool("IsCrouching", true);
             MovementSpeed = SneekSpeed;
@@ -198,6 +201,16 @@ public class Entity : MonoBehaviour
             anim.SetBool("IsRunning", false);
             
         }
+
+        if (Boolon.Event == true)
+        {
+            Debug.Log("working");
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsWalkingL", false);
+            anim.SetBool("IsWalkingR", false);
+            anim.SetBool("IsRunning", false);
+        }
+
     }
 
     public void Jump()

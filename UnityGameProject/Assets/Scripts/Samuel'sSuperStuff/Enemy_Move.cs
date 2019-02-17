@@ -11,9 +11,9 @@ public class Enemy_Move : MonoBehaviour
 
     Animator anim; //Assigns the animator
 
-    public EnemySight MovTime;
+    //public EnemySight MovTime;
 
-    public float RayLength;
+   // public float RayLength;
     private float TimeLeft = 3.0f;
 
     void Start()
@@ -24,8 +24,8 @@ public class Enemy_Move : MonoBehaviour
 
     void Update()
     {
-        if (MovTime.Moving)
-        {
+        //if (MovTime.Moving)
+        //{
 
             if (Player)
             {
@@ -43,7 +43,7 @@ public class Enemy_Move : MonoBehaviour
                     
                 }
             }
-        }
+        //}
        // else if (!MovTime.Moving)
        // {
        //     anim.SetBool("IsWalking", false);

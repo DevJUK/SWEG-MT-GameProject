@@ -6,8 +6,8 @@ public class Event_Start : MonoBehaviour
 {
     public bool Event;
     public GameObject Player;
-    public PlayerController MovementScript;
-    Animator anim;
+    public PlayerController MovementScript;    
+    public Enemy_Move AIMovment;
 
     // Start is called before the first frame update
     void Start()
@@ -20,26 +20,17 @@ public class Event_Start : MonoBehaviour
     {
         if(Event == true)
         {
-
+            AIMovment.enabled = true;
         }
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("running");
             MovementScript.enabled = false;
             Event = true;
-
-        if(MovementScript == false)
-            {
-                anim.SetBool("IsWalking", false);
-                anim.SetBool("IsWalkingL", false);
-                anim.SetBool("IsWalkingR", false);
-                anim.SetBool("IsRunning", false);
-            }
-            
-        }
+        }        
     }
 }

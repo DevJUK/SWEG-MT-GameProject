@@ -200,16 +200,7 @@ public class Entity : MonoBehaviour
             anim.SetBool("IsWalkingR", false);
             anim.SetBool("IsRunning", false);
             
-        }
-
-        if (Boolon.Event == true)
-        {
-            Debug.Log("working");
-            anim.SetBool("IsWalking", false);
-            anim.SetBool("IsWalkingL", false);
-            anim.SetBool("IsWalkingR", false);
-            anim.SetBool("IsRunning", false);
-        }
+        }       
 
     }
 
@@ -231,5 +222,17 @@ public class Entity : MonoBehaviour
     public float GetSpeed()
     {
         return WalkSpeed;
+    }
+
+    public void AnimStop()
+    {
+        if (Boolon.Event == true)
+        {
+            Debug.Log("working");
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsWalkingL", false);
+            anim.SetBool("IsWalkingR", false);
+            anim.SetBool("IsRunning", false);
+        }
     }
 }

@@ -3,7 +3,92 @@ guid: 148d267784557ab47b4fb298c95ca26e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: Camera01
+    100002: Camera01.Target
+    100004: //RootNode
+    100006: COW
+    100008: COWBODY
+    100010: COWcas
+    100012: COWcas01
+    100014: COWcas02
+    100016: COWcas03
+    100018: COWCUER
+    100020: COWeye02
+    100022: COWeye1
+    100024: Dummy01
+    100026: Dummy01 1
+    100028: Spot01
+    100030: Spot01.Target
+    100032: Spot02
+    100034: Spot02.Target
+    100036: Spot03
+    100038: Spot03.Target
+    100040: Spot04
+    100042: Spot04.Target
+    100044: Spot05
+    100046: Spot05.Target
+    400000: Camera01
+    400002: Camera01.Target
+    400004: //RootNode
+    400006: COW
+    400008: COWBODY
+    400010: COWcas
+    400012: COWcas01
+    400014: COWcas02
+    400016: COWcas03
+    400018: COWCUER
+    400020: COWeye02
+    400022: COWeye1
+    400024: Dummy01
+    400026: Dummy01 1
+    400028: Spot01
+    400030: Spot01.Target
+    400032: Spot02
+    400034: Spot02.Target
+    400036: Spot03
+    400038: Spot03.Target
+    400040: Spot04
+    400042: Spot04.Target
+    400044: Spot05
+    400046: Spot05.Target
+    2000000: Camera01
+    2100000: COWEYE
+    2100002: COWCUE
+    2100004: COWPEZ
+    2100006: COWSKIN
+    2300000: COWBODY
+    2300002: COWcas
+    2300004: COWcas01
+    2300006: COWcas02
+    2300008: COWcas03
+    2300010: COWCUER
+    2300012: COWeye02
+    2300014: COWeye1
+    3300000: COWBODY
+    3300002: COWcas
+    3300004: COWcas01
+    3300006: COWcas02
+    3300008: COWcas03
+    3300010: COWCUER
+    3300012: COWeye02
+    3300014: COWeye1
+    4300000: COWeye02
+    4300002: COWCUER
+    4300004: COWcas03
+    4300006: COWcas02
+    4300008: COWcas01
+    4300010: COWcas
+    4300012: COWBODY
+    4300014: COWeye1
+    7400000: Take 001
+    9500000: //RootNode
+    10800000: Spot01
+    10800002: Spot02
+    10800004: Spot03
+    10800006: Spot04
+    10800008: Spot05
     2186277476908879412: ImportLogs
+    6000828045688606266: Camera01
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -57,7 +142,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

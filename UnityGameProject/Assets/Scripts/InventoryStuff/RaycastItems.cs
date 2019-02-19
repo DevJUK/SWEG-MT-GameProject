@@ -20,9 +20,6 @@ public class RaycastItems : MonoBehaviour
 		PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
 
 		InRangeUI();
-
-        
-        
 	}
 
 
@@ -69,14 +66,7 @@ public class RaycastItems : MonoBehaviour
 						PickupScript.BlankText();
 					}
 				}
-
-                UIOpen = true;
             }
-
-		}
-		else
-		{
-			UIOpen = false;
 		}
 
 		InRangeUI(); // if looking at an item then show ui

@@ -18,7 +18,6 @@ public class RaycastItems : MonoBehaviour
 	private void Start()
 	{
 		PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
-
 		InRangeUI();
 	}
 
@@ -39,6 +38,11 @@ public class RaycastItems : MonoBehaviour
 
                 NameofNPCHit = Hit.transform.name; // getting the name of the NPC hit 
                 Debug.Log("Raycast Hitting NPC");
+
+                if (UI.activeInHierarchy) // might need work +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                {
+                    PickupScript.SetText(Hit.transform.gameObject.GetComponent<NPCDialogueScrpt>().NPCName);
+                }
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {

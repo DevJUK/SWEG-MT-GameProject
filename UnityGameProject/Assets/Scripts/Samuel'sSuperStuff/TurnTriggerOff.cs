@@ -8,8 +8,9 @@ public class TurnTriggerOff : MonoBehaviour
     public Event_Start Boolon;
     public PlayerController MovementScript;
     public Enemy_Move2 MoveStart;
-   
-    
+    public Mouse_Move stopMouse;
+
+
 
     private void Update()
     {
@@ -27,7 +28,8 @@ public class TurnTriggerOff : MonoBehaviour
             TriggerBox.SetActive(false);
             MoveStart.enabled = true;
             MovementScript.enabled = true;
-            
+            stopMouse.enabled = true;
+
         }
 
     }

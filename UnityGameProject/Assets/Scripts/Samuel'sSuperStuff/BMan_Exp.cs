@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BMan_Exp : MonoBehaviour
-{
-    public float radius = 5.0f;
-    public float power = 10.0f;
-    public GameObject BurningMan;
-    Rigidbody Rigid;
+{    
+    public float ExplosivePower;
+    public float ExplosiveRadius;
+    //public GameObject Explosion;
 
-    private Vector3 explosivePos;
-
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigid.velocity = new Vector2(radius * Time.deltaTime, -power * Time.deltaTime);
-    }
-
-    void Exp ()
-    {
-        explosivePos = transform.position;
-        explosivePos += new Vector3();
-        Instantiate(BurningMan, explosivePos, Quaternion.identity);
-        Destroy(gameObject);
+        var Objects = GameObject.FindObjectsOfType<Rigidbody>();
+        foreach (Rigidbody item in Objects)
+        {
+            if (Vector2.Distance(item.gameObject.transform.position, transform.gameObject.transform.position) < ExplosivePower)
+            {
+                Debug.Log(item.gameObject.name);
+                item.gameObject.GetComponent<Rigidbody>().AddForce((item.gameObject.transform.position - transform.position) * ExplosivePower, ForceMode.Impulse);
+            }
+        }
     }
 }

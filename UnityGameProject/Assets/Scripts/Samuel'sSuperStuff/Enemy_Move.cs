@@ -11,6 +11,7 @@ public class Enemy_Move : MonoBehaviour
 
     Animator anim; //Assigns the animator
 
+    
     //public EnemySight MovTime;
 
    // public float RayLength;
@@ -33,6 +34,8 @@ public class Enemy_Move : MonoBehaviour
                 {
                     enemy.destination = Player.transform.position;
                     anim.SetBool("IsWalking", false);
+                    
+                    
                     //anim.SetBool("Attack", true);
                 }
                 else 

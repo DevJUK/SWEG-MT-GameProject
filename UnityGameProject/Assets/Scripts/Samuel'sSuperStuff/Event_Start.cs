@@ -6,7 +6,8 @@ public class Event_Start : MonoBehaviour
 {
     public bool Event;
     //public GameObject Player;
-    public PlayerController MovementScript;    
+    public PlayerController MovementScript;
+    public Mouse_Move stopMouse;
     public Enemy_Move AIMovment;
     //public Entity AnimStop;
     //public Event_Start Boolon;
@@ -27,6 +28,7 @@ public class Event_Start : MonoBehaviour
         { 
             Debug.Log("running");
             MovementScript.enabled = false;
+            stopMouse.enabled = false;
             Event = true;
         }        
     }

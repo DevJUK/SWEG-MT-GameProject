@@ -8,7 +8,7 @@ public class RaycastItems : MonoBehaviour
 	public GameObject UI;
 	private bool UIOpen;
 
-	private PickupUIText PickupScript;
+	public PickupUIText PickupScript;
 
     // Anything to do with NPC's in this script was done by Ed so talk to him
 
@@ -17,8 +17,8 @@ public class RaycastItems : MonoBehaviour
 
 	private void Start()
 	{
-		PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
-		InRangeUI();
+		//PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
+		//PickupScript.gameObject.SetActive(false);
 	}
 
 
@@ -49,8 +49,13 @@ public class RaycastItems : MonoBehaviour
                     NPCInteractionScrpt.StartInteraction();
                 }
             }
-            else // if item do this
+
+
+
+
+            else
             {
+
 				if (Input.GetButtonDown("Pickup")) // E Key
                 {
 					AddHitToInv(Hit);
@@ -58,10 +63,7 @@ public class RaycastItems : MonoBehaviour
 
 				if (Hit.transform.gameObject.GetComponent<Item>())
 				{
-					if (UI.activeInHierarchy)
-					{
-						PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName);
-					}
+					PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName.ToString());
 				}
 				else
 				{
@@ -72,8 +74,6 @@ public class RaycastItems : MonoBehaviour
 				}
             }
 		}
-
-		InRangeUI(); // if looking at an item then show ui
 	}
 
 
@@ -90,7 +90,7 @@ public class RaycastItems : MonoBehaviour
 	}
 
 
-	private void InRangeUI()
+	private void ToggleUI()
 	{
 		if (UIOpen)
 		{

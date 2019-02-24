@@ -9,6 +9,7 @@ public class ClassroomCutsceneController : MonoBehaviour
 	public PlayerController MovementScript;
 	public PlayableDirector PD;
 	public TimelineAsset Timeline;
+	//public Camera Cam;
 	private bool HasCutscenePlayed;
 
 	void OnTriggerEnter(Collider collision)
@@ -26,6 +27,7 @@ public class ClassroomCutsceneController : MonoBehaviour
 	{
 		if (!HasCutscenePlayed)
 		{
+			//Cam.enabled = false;
 			PD.Play();
 			HasCutscenePlayed = true;
 		}

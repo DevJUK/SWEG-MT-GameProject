@@ -7,6 +7,7 @@ using UnityEngine.Timeline;
 [System.Serializable]
 public class ClassroomCutsceneController : MonoBehaviour
 {
+	public GameObject Miranda;
 	public PlayerController MovementScript;
 	public PlayableDirector PD;
 	public TimelineAsset Timeline;
@@ -43,6 +44,7 @@ public class ClassroomCutsceneController : MonoBehaviour
 		{
 			if (PD.state == PlayState.Paused)
 			{
+				Miranda.SetActive(false);
 				MovementScript.enabled = true;
 				MovementScript.gameObject.GetComponent<Mouse_Move>().enabled = true;
 			}

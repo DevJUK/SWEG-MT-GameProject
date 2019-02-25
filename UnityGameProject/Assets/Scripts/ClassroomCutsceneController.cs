@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
+[System.Serializable]
 public class ClassroomCutsceneController : MonoBehaviour
 {
 	public PlayerController MovementScript;
@@ -17,7 +18,6 @@ public class ClassroomCutsceneController : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player"))
 		{
 			Debug.Log("running");
-			MovementScript.enabled = false;
 			PlayCutscene();
 		}
 	}
@@ -30,6 +30,22 @@ public class ClassroomCutsceneController : MonoBehaviour
 			//Cam.enabled = false;
 			PD.Play();
 			HasCutscenePlayed = true;
+			MovementScript.gameObject.GetComponent<Animator>().SetBool("IsWalking", false);
+			MovementScript.enabled = false;
+			MovementScript.gameObject.GetComponent<Mouse_Move>().enabled = false;
+		}
+	}
+
+
+	private void Update()
+	{
+		if (HasCutscenePlayed)
+		{
+			if (PD.state == PlayState.Paused)
+			{
+				MovementScript.enabled = true;
+				MovementScript.gameObject.GetComponent<Mouse_Move>().enabled = true;
+			}
 		}
 	}
 }

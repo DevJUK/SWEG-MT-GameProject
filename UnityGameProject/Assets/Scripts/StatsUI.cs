@@ -6,7 +6,7 @@ public class StatsUI : MonoBehaviour
 	// Enum for the states for this script, allows it to be attached to all UI elements that need it without needing aditional scripts.
 	public enum Stat
 	{
-		Health, Sanity, Strength, Agility, Intelligence, Willpower, Perception, Charisma,
+		Health, Sanity, Strength, Agility, Intelligence, Willpower, Perception, Charisma, HealthText, SanityText
 	};
 
 	// Reference to enum for use in this script
@@ -15,6 +15,7 @@ public class StatsUI : MonoBehaviour
 	// Elements that are needed to make this script work (are referenced in start)
 	private Slider Slider;
 	private Image Image;
+	private Text Text;
 	private Stats StatsScript;
 
 	// Sets up an references that are needed for this script
@@ -38,12 +39,17 @@ public class StatsUI : MonoBehaviour
 		{
 			Image = GetComponent<Image>();
 		}
+
+		if (GetComponent<Text>())
+		{
+			Text = GetComponent<Text>();
+		}
 	}
 
 
 	private void FixedUpdate()
 	{
-		UpdateStats();	
+		UpdateStats();
 	}
 
 
@@ -75,6 +81,12 @@ public class StatsUI : MonoBehaviour
 				break;
 			case Stat.Charisma:
 				Slider.value = StatsScript.Charisma;
+				break;
+			case Stat.HealthText:
+				Text.text = StatsScript.Health.ToString();
+				break;
+			case Stat.SanityText:
+				Text.text = StatsScript.Sanity.ToString();
 				break;
 			default:
 				break;

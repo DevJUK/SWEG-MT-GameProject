@@ -4,7 +4,7 @@ public class Stats : MonoBehaviour
 {
 	/*
 	 *	Health & Sanity 
-	*/ 
+	*/
 
 	public int Health { get; set; }
 	public int Sanity { get; set; }
@@ -28,6 +28,11 @@ public class Stats : MonoBehaviour
 		DefaultSetup();
 	}
 
+
+	private void Update()
+	{
+		Debug.Log(Health);
+	}
 
 	// Used for to set the stats to a default value of 50% filled and max health and sanity
 	internal void DefaultSetup()

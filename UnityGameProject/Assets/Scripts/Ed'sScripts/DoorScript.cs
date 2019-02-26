@@ -30,13 +30,35 @@ public class DoorScript : MonoBehaviour
             {
                 DoorOpen = false;
                 // Play closing animation
+
+				// -- Jonathan Addition Start --
+				if (GetComponentInChildren<Animator>())
+				{
+					foreach(Animator A in GetComponentsInChildren<Animator>())
+					{
+						A.SetTrigger("DoorOpened");
+					}
+				}
+				// -- Jonathan Addition End --
+
                 Debug.Log("Door is Open, closing door");
             }
             else
             {
                 DoorOpen = true;
-                // Play Opening animation
-                Debug.Log("Door is closed, opening door");
+
+				// -- Jonathan Addition Start --
+				if (GetComponentInChildren<Animator>())
+				{
+					foreach (Animator A in GetComponentsInChildren<Animator>())
+					{
+						A.SetTrigger("DoorClosed");
+					}
+				}
+				// -- Jonathan Addition End --
+
+				// Play Opening animation
+				Debug.Log("Door is closed, opening door");
             }
         }
 

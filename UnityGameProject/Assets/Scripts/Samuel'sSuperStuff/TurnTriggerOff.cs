@@ -5,6 +5,9 @@ using UnityEngine;
 public class TurnTriggerOff : MonoBehaviour
 {
     public GameObject TriggerBox;
+    public GameObject Camera1;
+    public GameObject Camera2;
+    public GameObject Fire;
     public Event_Start Boolon;
     public PlayerController MovementScript;
     public Enemy_Move2 MoveStart;
@@ -19,16 +22,17 @@ public class TurnTriggerOff : MonoBehaviour
 
     IEnumerator BoxOff()
     {
-       
-
         if (Boolon.Event == true)
         {
-
             yield return new WaitForSeconds(10);
             TriggerBox.SetActive(false);
+            Camera1.SetActive(true);
+            Camera2.SetActive(false);
+            Fire.SetActive(false);
             MoveStart.enabled = true;
             MovementScript.enabled = true;
             stopMouse.enabled = true;
+
 
         }
 

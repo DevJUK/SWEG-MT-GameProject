@@ -13,6 +13,7 @@ public class RaycastItems : MonoBehaviour
     // Anything to do with NPC's in this script was done by Ed so talk to him
 
     public NPCInteractionScrpt NPCInteractionScrpt; // the main controll script for npc dialogue interactions
+    public MirrorTipScript MirrorTipScript; // Script used to tip the mirror (who'd of guessed it)
     public string NameofNPCHit; // Used to send the name of the NPC to the NPC interaction script
 
 	private void Start()
@@ -50,7 +51,15 @@ public class RaycastItems : MonoBehaviour
                 }
             }
 
+            if (Hit.transform.tag == "Mirror")
+            {
+                Debug.Log("Raycast hitting mirror");
 
+                if (Input.GetButtonDown("Pickup")) // E Key
+                {
+                    MirrorTipScript.TipMirror();
+                }
+            }
 
 
             else

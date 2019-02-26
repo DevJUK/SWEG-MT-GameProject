@@ -32,8 +32,6 @@ public class TurnTriggerOff : MonoBehaviour
             MoveStart.enabled = true;
             MovementScript.enabled = true;
             stopMouse.enabled = true;
-
-
         }
 
     }

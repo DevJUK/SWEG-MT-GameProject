@@ -7,7 +7,7 @@ public class CameraSwitch : MonoBehaviour
     public GameObject Camera1;
     public GameObject Camera2;
     public GameObject Fire;
-    public Event_Start Boolon;
+    public Larder_Event_Start Boolon;
     private void Update()
     {
         if (Boolon.Event == true)

@@ -25,6 +25,7 @@ public class Event_Start : MonoBehaviour
     public FlyingPans PansMove11;
     public FlyingPans PansMove12;
 
+    
 
     void Update()
     {
@@ -37,7 +38,13 @@ public class Event_Start : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        { 
+        {
+            
+
+
+
+
+
             Debug.Log("running");
             MovementScript.enabled = false;
             stopMouse.enabled = false;

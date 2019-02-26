@@ -10,6 +10,10 @@ public class BMan_Exp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //transform.DetachChildren;
+
+
+
         var Objects = GameObject.FindObjectsOfType<Rigidbody>();
         foreach (Rigidbody item in Objects)
         {

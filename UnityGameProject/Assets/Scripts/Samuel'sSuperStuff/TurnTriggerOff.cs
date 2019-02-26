@@ -8,10 +8,12 @@ public class TurnTriggerOff : MonoBehaviour
     public GameObject Camera1;
     public GameObject Camera2;
     public GameObject Fire;
-    public Event_Start Boolon;
+    
+    public Larder_Event_Start Boolon;
     public PlayerController MovementScript;
     public Enemy_Move2 MoveStart;
     public Mouse_Move stopMouse;
+    public Enemy_Move MoveStop;
 
 
 
@@ -29,9 +31,11 @@ public class TurnTriggerOff : MonoBehaviour
             Camera1.SetActive(true);
             Camera2.SetActive(false);
             Fire.SetActive(false);
+            
             MoveStart.enabled = true;
             MovementScript.enabled = true;
             stopMouse.enabled = true;
+            MoveStop.enabled = false;
         }
 
     }

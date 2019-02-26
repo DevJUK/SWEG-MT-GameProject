@@ -144,6 +144,11 @@ ModelImporter:
     13700000: WhiteClown
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteClown_material
+    second: {fileID: 2100000, guid: 27ac5783d1e3d8044aaf47ba4a3c9492, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: whiteclown_alpha

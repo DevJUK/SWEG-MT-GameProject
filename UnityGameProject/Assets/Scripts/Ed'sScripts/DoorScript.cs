@@ -6,18 +6,34 @@ public class DoorScript : MonoBehaviour
 {
     public bool Locked;
     public bool DoorOpen;
+	private bool Called;
 
-    public void OpenDoor()
+	private void Update()
+	{
+		if (Input.GetButton("Pickup"))
+		{
+			Debug.Log("Test");
+
+			if (!Called)
+			{
+				OpenDoor();
+				Called = true;
+			}
+		}
+	}
+
+
+	public void OpenDoor()
     {
-        if (Locked)
-        {
-            Debug.Log("The door is locked");
-        }
-        else
-        {
-            if (DoorOpen)
-            {
-                DoorOpen = false;
+		if (Locked)
+		{
+			Debug.Log("The door is locked");
+		}
+		else
+		{
+			if (DoorOpen)
+			{
+
 				// Play closing animation
 
 				// -- Jonathan Addition Start --
@@ -27,14 +43,15 @@ public class DoorScript : MonoBehaviour
 					{
 						A.SetTrigger("DoorClosed");
 					}
+
+					DoorOpen = false;
 				}
 				// -- Jonathan Addition End --
-
 				Debug.Log("Door is Open, closing door");
-            }
-            else
-            {
-                DoorOpen = true;
+			}
+
+			else
+			{
 
 				// -- Jonathan Addition Start --
 				if (GetComponentInChildren<Animator>())
@@ -43,32 +60,33 @@ public class DoorScript : MonoBehaviour
 					{
 						A.SetTrigger("DoorOpened");
 					}
+
+					DoorOpen = true;
 				}
 				// -- Jonathan Addition End --
-
 				// Play Opening animation
 				Debug.Log("Door is closed, opening door");
-            }
-        }
-
+			}
+		}
     }
-
 
 	// -- Jonathan Addition Start --
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
-			OpenDoor();
-		}
+		//if (other.gameObject.tag == "Player")
+		//{
+		//	OpenDoor();
+		//}
+		Called = false;
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
-			OpenDoor();
-		}
+		//if (other.gameObject.tag == "Player")
+		//{
+		//	OpenDoor();
+		//}
+		Called = false;
 	}
 	// -- Jonathan Addition End --
 }

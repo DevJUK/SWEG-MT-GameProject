@@ -15,9 +15,10 @@ public class HealthBarScript : MonoBehaviour
 	}
 
 
-	private void UpdateHealthBar(float Health)
+	public float UpdateHealthBar(float Health)
 	{
 		float Amount = Health / 10;
 		HealthBar.fillAmount = Amount;
+		return Amount;
 	}
 }

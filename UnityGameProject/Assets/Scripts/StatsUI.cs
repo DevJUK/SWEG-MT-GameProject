@@ -59,10 +59,10 @@ public class StatsUI : MonoBehaviour
 		switch (GetStat)
 		{
 			case Stat.Health:
-				Image.fillAmount = StatsScript.Health / 10;
+				Image.fillAmount = StatsScript.Health / 10f;
 				break;
 			case Stat.Sanity:
-				Image.fillAmount = StatsScript.Sanity / 10;
+				Image.fillAmount = StatsScript.Sanity / 10f;
 				break;
 			case Stat.Strength:
 				Slider.value = StatsScript.Strength;

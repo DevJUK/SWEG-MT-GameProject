@@ -18,7 +18,7 @@ public class SnakeScript : MonoBehaviour
 		if (collision.gameObject.tag == "Player")
 		{
 			BiteEventScript.MoveSnake = false;
-			Player.GetComponentInChildren<Stats>().Health = 9;
+			Player.GetComponentInChildren<Stats>().Health -= 1;
 			Player.GetComponentInChildren<PlayerController>().enabled = true;
 			gameObject.SetActive(false);
 		}

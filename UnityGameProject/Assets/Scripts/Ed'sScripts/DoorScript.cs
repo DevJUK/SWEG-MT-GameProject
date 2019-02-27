@@ -6,7 +6,10 @@ public class DoorScript : MonoBehaviour
 {
     public bool Locked;
     public bool DoorOpen;
-	private bool Called;
+	public bool Called;
+	public bool PlayerInTrigger;
+
+	public List<GameObject> Doors;
 
 	private void Update()
 	{
@@ -14,7 +17,7 @@ public class DoorScript : MonoBehaviour
 		{
 			Debug.Log("Test");
 
-			if (!Called)
+			if ((!Called) && (PlayerInTrigger))
 			{
 				OpenDoor();
 				Called = true;
@@ -37,32 +40,27 @@ public class DoorScript : MonoBehaviour
 				// Play closing animation
 
 				// -- Jonathan Addition Start --
-				if (GetComponentInChildren<Animator>())
+				foreach (GameObject G in Doors)
 				{
-					foreach (Animator A in GetComponentsInChildren<Animator>())
-					{
-						A.SetTrigger("DoorClosed");
-					}
-
-					DoorOpen = false;
+					G.GetComponent<Animator>().SetTrigger("DoorClosed");
 				}
+
+				DoorOpen = false;
+				Called = false;
 				// -- Jonathan Addition End --
 				Debug.Log("Door is Open, closing door");
 			}
 
 			else
 			{
-
 				// -- Jonathan Addition Start --
-				if (GetComponentInChildren<Animator>())
+				foreach (GameObject G in Doors)
 				{
-					foreach (Animator A in GetComponentsInChildren<Animator>())
-					{
-						A.SetTrigger("DoorOpened");
-					}
-
-					DoorOpen = true;
+					G.GetComponent<Animator>().SetTrigger("DoorOpened");
 				}
+
+				DoorOpen = true;
+				Called = false;
 				// -- Jonathan Addition End --
 				// Play Opening animation
 				Debug.Log("Door is closed, opening door");
@@ -73,20 +71,21 @@ public class DoorScript : MonoBehaviour
 	// -- Jonathan Addition Start --
 	private void OnTriggerEnter(Collider other)
 	{
-		//if (other.gameObject.tag == "Player")
-		//{
-		//	OpenDoor();
-		//}
-		Called = false;
+		if (other.gameObject.tag == "Player")
+		{
+			PlayerInTrigger = true;
+		}
+
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		//if (other.gameObject.tag == "Player")
-		//{
-		//	OpenDoor();
-		//}
-		Called = false;
+		if (other.gameObject.tag == "Player")
+		{
+			PlayerInTrigger = false;
+			Called = false;
+		}
+
 	}
 	// -- Jonathan Addition End --
 }

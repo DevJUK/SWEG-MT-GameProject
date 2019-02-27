@@ -23,5 +23,4 @@ public class SnakeScript : MonoBehaviour
 			gameObject.SetActive(false);
 		}
 	}
-
 }

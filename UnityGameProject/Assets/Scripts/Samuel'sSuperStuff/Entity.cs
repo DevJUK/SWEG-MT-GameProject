@@ -186,6 +186,17 @@ public class Entity : MonoBehaviour
         
             Rigid.velocity = Vec * SpeedModifier;
         }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            Moving = true;
+
+            anim.SetBool("IsWalkingR", true);
+
+            Vector3 Vec;
+            Vec = new Vector3(MoveDir.x * MovementSpeed, Rigid.velocity.y, MoveDir.z * MovementSpeed);
+
+            Rigid.velocity = Vec * SpeedModifier;
+        }
 
 
         //if(Input.GetKey(KeyCode.Space))

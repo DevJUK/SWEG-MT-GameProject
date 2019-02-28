@@ -43,6 +43,11 @@ public class Item : MonoBehaviour
 		InvScript.AddItem(i);
 	}
 
+	public void RemoveItemFromInv()
+	{
+		InvScript.RemoveItem();
+	}
+
 
 	private void OnCollisionExit2D(Collision2D collision)
 	{

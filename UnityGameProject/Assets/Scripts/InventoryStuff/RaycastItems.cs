@@ -8,6 +8,8 @@ public class RaycastItems : MonoBehaviour
 	public GameObject UI;
 	private bool UIOpen;
 
+	private RaycastHit LastHit;
+
 	public PickupUIText PickupScript;
 	private ThrowableItemScript ThrowScript;
 
@@ -19,9 +21,8 @@ public class RaycastItems : MonoBehaviour
 
 	private void Start()
 	{
-		ThrowScript = GameObject.FindGameObjectWithTag("Player").GetComponent<ThrowableItemScript>();
+		ThrowScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>();
 		PickupScript = GameObject.Find("PickupPopup").GetComponent<PickupUIText>();
-		PickupScript.gameObject.SetActive(false);
 	}
 
 
@@ -33,6 +34,9 @@ public class RaycastItems : MonoBehaviour
 
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
+
+			LastHit = Hit;
+
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
             {
@@ -72,22 +76,30 @@ public class RaycastItems : MonoBehaviour
 					if (ThrowScript.ItemHeld != null)
 					{
 						AddHitToInv(Hit);
+						ThrowScript.ItemHeld = null;
 					}
 					else
 					{
-						ThrowScript.ItemHeld = Hit.transform.gameObject;
+						Debug.Log("Throw Item Test");
+						if (Hit.transform.gameObject.GetComponent<Item>())
+						{
+							ThrowScript.ItemHeld = Hit.transform.gameObject;
+						}
 					}
 				}
 
-				if (Hit.transform.gameObject.GetComponent<Item>())
+				if (ThrowScript.ItemHeld == null)
 				{
-					PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName.ToString());
-				}
-				else
-				{
-					if (UI.activeInHierarchy)
+					if (Hit.transform.gameObject.GetComponent<Item>())
 					{
-						PickupScript.BlankText();
+						PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName.ToString());
+					}
+					else
+					{
+						if (UI.activeInHierarchy)
+						{
+							PickupScript.BlankText();
+						}
 					}
 				}
             }
@@ -106,6 +118,7 @@ public class RaycastItems : MonoBehaviour
 			PickupScript.BlankText();
 		}
 	}
+
 
 
 	private void ToggleUI()

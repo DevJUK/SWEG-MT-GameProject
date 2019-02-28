@@ -35,6 +35,7 @@ public class InventoryScript : MonoBehaviour
 
 	private void Start()
 	{
+		Player = GameObject.FindGameObjectWithTag("Player");
 		Events = FindObjectOfType<EventSystem>().GetComponent<EventSystem>();
 	}
 
@@ -69,18 +70,18 @@ public class InventoryScript : MonoBehaviour
 							{
 								SelectedItem = i;
 
-								foreach (Image i2 in ItemImages)
-								{
-									if (i2.sprite == SelectedItem.ItemSprite)
-									{
-										i2.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
-										break;
-									}
-									else
-									{
-										continue;
-									}
-								}
+								//foreach (Image i2 in ItemImages)
+								//{
+								//	if (i2.sprite == SelectedItem.ItemSprite)
+								//	{
+								//		i2.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
+								//		break;
+								//	}
+								//	else
+								//	{
+								//		continue;
+								//	}
+								//}
 							}
 							NumberOfPresses++;
 						}
@@ -153,20 +154,18 @@ public class InventoryScript : MonoBehaviour
 
 	public void RemoveItem()
 	{
-
 		for (int i = 0; i < items.Length; i++)                  // For each slot in the inventory
 		{
 			if (items[i] == SelectedItem)                              // Check to see if the item inputted is in the inventory
 			{
 				items[i].gameObject.transform.position = new Vector3(Player.transform.position.x - 1, Player.transform.position.y, Player.transform.position.z); 
+
 				items[i].gameObject.SetActive(true);
 				items[i].gameObject.GetComponent<Item>().enabled = false;
 
 				items[i] = null;                                // removes the item from the inventory returning it to null
 				ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 				ItemImages[i].enabled = false;
-				//ItemImages[i].GetComponent<Stack>().ResetStack();
-				//ItemImages[i].GetComponent<Stack>().ResetItemText();					// would reset the name of the slot to nothing - not needed as its not in use
 				break;
 			}
 		}
@@ -204,6 +203,7 @@ public class InventoryScript : MonoBehaviour
 					}
 				}
 
+				ItemDetail.GetComponent<UIBGScript>().ThisItem = SelectedItem;
 				SelectedItem = null;
 				NumberOfPresses = 0;
 			}

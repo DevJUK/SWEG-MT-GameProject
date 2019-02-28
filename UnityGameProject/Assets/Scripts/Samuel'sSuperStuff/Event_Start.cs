@@ -24,14 +24,30 @@ public class Event_Start : MonoBehaviour
     public FlyingPans PansMove10;
     public FlyingPans PansMove11;
     public FlyingPans PansMove12;
+    public GameObject Butcher;
+    public float ButcherTimer;
+    private Stats StatsScript;
 
-    
+
+    private void Start()
+    {
+        StatsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
+    }
 
     void Update()
     {
         if(Event == true)
         {
             AIMovment.enabled = true;
+            ButcherTimer -= Time.deltaTime;
+
+        }
+
+
+
+        if (ButcherTimer <= 0)
+        {
+            Butcher.gameObject.SetActive(false);
         }
     }
 
@@ -39,10 +55,9 @@ public class Event_Start : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
+
             
-
-
-
 
 
             Debug.Log("running");
@@ -60,7 +75,9 @@ public class Event_Start : MonoBehaviour
             PansMove10.enabled = true;
             PansMove11.enabled = true;
             PansMove12.enabled = true;
+            
             Event = true;
+            StatsScript.Health -= 1;
         }        
     }
 }

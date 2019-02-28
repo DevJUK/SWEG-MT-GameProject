@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnTriggerOff : MonoBehaviour
+public class TurnTriggerOffButcher : MonoBehaviour
 {
-    public GameObject TriggerBox;
-    public GameObject Camera1;
-    public GameObject Camera2;
-    public GameObject Fire;
+    public GameObject TriggerBox;    
     
     public Event_Start Boolon;
     public PlayerController MovementScript;
-    public Enemy_Move2 MoveStart;
+
     public Mouse_Move stopMouse;
     public Enemy_Move MoveStop;
 
@@ -28,11 +25,7 @@ public class TurnTriggerOff : MonoBehaviour
         {
             yield return new WaitForSeconds(10);
             TriggerBox.SetActive(false);
-            Camera1.SetActive(true);
-            Camera2.SetActive(false);
-            Fire.SetActive(false);
-            
-            MoveStart.enabled = true;
+           
             MovementScript.enabled = true;
             stopMouse.enabled = true;
             MoveStop.enabled = false;

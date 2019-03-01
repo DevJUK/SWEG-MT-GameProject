@@ -14,7 +14,7 @@ public class NPCInteractionScrpt : MonoBehaviour
     public AudioManager AudioManager;
 
     // The canvas that will hold all of the text boxes for dialogue
-    [Header("Canvas")]
+    [Header("Dialogue Canvas")]
     [Tooltip("The canvas that will hold all of the text boxes for dialogue")]
     public GameObject InteractionCanvas;
 
@@ -41,6 +41,10 @@ public class NPCInteractionScrpt : MonoBehaviour
     [Header("Player dialogue lines")]
     [Tooltip("Put any dialogue you want the player to say in here, remember to use the in text triggers")]
     public List<string> PlayerDialogue;
+
+    [Header("Dialogue Option Canvas")]
+    [Tooltip("The canvas that will hold the buttons for selecting dialogue options")]
+    public GameObject DialogueOptionCanvas;
 
     private RaycastItems RaycastItems; // The script that tells us if we are looking at an item or npc
     private NPCDialogueScrpt NPCDialogueScrpt; // The script that has all the NPC's dialogue in it
@@ -225,6 +229,18 @@ public class NPCInteractionScrpt : MonoBehaviour
                 DialoguePath++;
             }
 
+            else if (DialogueValue.Contains("#TConfirm:")) // Used to ask the player if they want to trade (could be expanded later to enable support for multiple dialogue options)
+            {
+                Debug.Log("Confirming Trade");
+                TradeConfirmation();
+            }
+
+            else if (DialogueValue.Contains("#TradeScript")) // Calls the script that controlls trading
+            {
+                Debug.Log("Starting Trade");
+                StartTrading();
+            }
+
             else
             {
                 PrintDialogue();
@@ -404,5 +420,35 @@ public class NPCInteractionScrpt : MonoBehaviour
         AudioManager.PlayClip(SoundIndexNo, 1, 1);
         Debug.Log("Play Sound: " + SoundIndexNo);
         DialoguePath++;
+    }
+
+    public void TradeConfirmation() // Turns on canvas so dialogue option can be chosen 
+    {
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Lock camera movement +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        InteractionCanvas.SetActive(false);
+        DialogueOptionCanvas.SetActive(true);
+        Interacting = false;
+    }
+
+    public void PlayerPickedYes() // jumps the player to the dialogue in responce to them saying yes
+    {
+        DialoguePath++;
+        DialogueOptionCanvas.SetActive(false);
+        // InteractionCanvas.SetActive(true);
+        StartInteraction();
+    }
+
+    public void PlayerPickedNo() // jumps the player to the dialogue in responce to them saying no
+    {
+        int route = System.Convert.ToInt16(DialogueValue.Remove(0, 10));
+        DialoguePath = route;
+        DialogueOptionCanvas.SetActive(false);
+        // InteractionCanvas.SetActive(true);
+        StartInteraction();
+    }
+
+    public void StartTrading() // calls the trading script
+    {
+        // Call your code here sam!! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 }

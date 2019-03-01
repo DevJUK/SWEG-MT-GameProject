@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HealingPasteScrpt : MonoBehaviour
 {
-    public float HealAmount; // Ammount item heals for 
+    public int HealAmount; // Ammount item heals for 
     public HealthBarScript HealthBarScript;
+    public Stats Stats;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +21,9 @@ public class HealingPasteScrpt : MonoBehaviour
 
     public void AddHealth()
     {
-        CheckIfItemInInventory();
-
-        HealthBarScript.UpdateHealthBar(HealAmount); // Add health to healthbar 
+        Stats.Health += HealAmount; // Add health
 
         RemoveItemFromInVentory();
-    }
-
-    public bool CheckIfItemInInventory()
-    {
-        bool InInventory;
-
-        InInventory = true;
-
-        return InInventory;
     }
 
     public void RemoveItemFromInVentory()

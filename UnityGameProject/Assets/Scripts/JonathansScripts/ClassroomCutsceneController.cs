@@ -14,6 +14,8 @@ public class ClassroomCutsceneController : MonoBehaviour
 	//public Camera Cam;
 	private bool HasCutscenePlayed;
 
+    public NPCInteractionScrpt NPCInteractionScrpt;
+
 	void OnTriggerEnter(Collider collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
@@ -24,12 +26,13 @@ public class ClassroomCutsceneController : MonoBehaviour
 	}
 
 
-	private void PlayCutscene()
+	internal void PlayCutscene()
 	{
 		if (!HasCutscenePlayed)
 		{
 			//Cam.enabled = false;
 			PD.Play();
+            //NPCInteractionScrpt.StartInteraction();
 			HasCutscenePlayed = true;
 			MovementScript.gameObject.GetComponent<Animator>().SetBool("IsWalking", false);
 			MovementScript.enabled = false;

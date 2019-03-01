@@ -49,6 +49,11 @@ public class RaycastItems : MonoBehaviour
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
                     NPCInteractionScrpt.StartInteraction();
+
+                    if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
+                    {
+                        Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>().PlayCutscene();
+                    }
                 }
             }
 

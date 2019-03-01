@@ -11,9 +11,11 @@ public class Enemy_Move_NeedleWoman : MonoBehaviour
 
     Animator anim; //Assigns the animator
 
+    public GameObject NeedleWoman;
     public bool PlayerInRoom;
-
     private int AmountOfStabs;
+    public Stats Stats;
+    public float WaitTime;
 
    // public float RayLength;
     private float TimeLeft = 3.0f;
@@ -37,17 +39,23 @@ public class Enemy_Move_NeedleWoman : MonoBehaviour
 
                 else if (enemy.remainingDistance != Mathf.Infinity && enemy.remainingDistance < enemy.stoppingDistance)
                 {
-                    if (AmountOfStabs == 2)
+                    if (AmountOfStabs == 2) // Used to get round the fact that the character will stab for no reason before running at the player
                     {
                         anim.SetBool("Running", false);
                         anim.SetBool("Stab", false);
-                    }
+
+                        StartCoroutine(StabPlaying(WaitTime));
+                        Stats.Strength--;
+                        Stats.Agility--;
+                        NeedleWoman.SetActive(false);
+                }
                     else
                     {
                         enemy.destination = Player.transform.position;
                         anim.SetBool("Running", false);
                         anim.SetBool("Stab", true);
-                    AmountOfStabs++;
+                        AmountOfStabs++;
+
                     }
                 }
             }
@@ -55,7 +63,12 @@ public class Enemy_Move_NeedleWoman : MonoBehaviour
             {
                 anim.SetBool("Running", false);
                 anim.SetBool("Stab", false);
-            Debug.Log("Go to idle");
+                Debug.Log("Go to idle");
             }
+    }
+
+    IEnumerator StabPlaying(float Wait)
+    {
+        yield return new WaitForSeconds(Wait);
     }
 }

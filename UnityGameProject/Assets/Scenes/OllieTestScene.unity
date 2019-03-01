@@ -1121,6 +1121,7 @@ MonoBehaviour:
   - '#Landing'
   - AAAAAAH, Its a zombie
   - '#Switch'
+  DialogueOptionCanvas: {fileID: 0}
   DialoguePath: 0
   StartingDialoguePath: 0
   CurrentPlayerDialoguePath: 0
@@ -1177,7 +1178,7 @@ Transform:
   - {fileID: 1453349481}
   - {fileID: 2054520526}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &60034294
 PrefabInstance:
@@ -8656,7 +8657,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &263168601 stripped
 Transform:
@@ -10183,6 +10184,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 715570902698189827, guid: 0c5ad8669265b6b44b276b65a6088945,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3995867173391546271, guid: 0c5ad8669265b6b44b276b65a6088945,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10252,11 +10258,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 715570902698189827, guid: 0c5ad8669265b6b44b276b65a6088945,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 715570902849479993, guid: 0c5ad8669265b6b44b276b65a6088945,
         type: 3}
@@ -12129,7 +12130,7 @@ Transform:
   - {fileID: 463267434}
   - {fileID: 1861293596}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469665316
 GameObject:
@@ -14605,7 +14606,7 @@ Transform:
   m_Children:
   - {fileID: 540150662}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651818051
 GameObject:
@@ -16141,7 +16142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753253396
 GameObject:
@@ -25337,7 +25338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1068465251
 GameObject:
@@ -34211,7 +34212,7 @@ Transform:
   m_LocalScale: {x: 54.47726, y: 0.3508866, z: 51.326267}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616033665
 GameObject:
@@ -35417,6 +35418,63 @@ Transform:
   m_Father: {fileID: 267102650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1668985609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_Name
+      value: StairBoi
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.31664896
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6934433
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.041197
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56cba4b2e0fded14889518e12cc0e7e8, type: 3}
 --- !u!1001 &1673862624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35569,7 +35627,7 @@ Transform:
   - {fileID: 1390194329}
   - {fileID: 1195065787}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1676259919 stripped
 MonoBehaviour:
@@ -36917,7 +36975,7 @@ Transform:
   - {fileID: 1191636296}
   - {fileID: 325541928}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777096388
 GameObject:
@@ -39889,7 +39947,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1956989726
 GameObject:
@@ -45701,6 +45759,7 @@ MonoBehaviour:
   - 
   - 
   - 
+  DialogueOptionCanvas: {fileID: 0}
   DialoguePath: 0
   StartingDialoguePath: 0
   CurrentPlayerDialoguePath: 0
@@ -46843,7 +46902,7 @@ Transform:
   m_Children:
   - {fileID: 540847312670894176}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2258449332657633017
 GameObject:

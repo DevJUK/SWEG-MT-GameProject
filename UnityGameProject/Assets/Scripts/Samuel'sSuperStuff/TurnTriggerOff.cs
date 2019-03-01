@@ -9,7 +9,7 @@ public class TurnTriggerOff : MonoBehaviour
     public GameObject Camera2;
     public GameObject Fire;
     
-    public Event_Start Boolon;
+    public Larder_Event_Start Boolon;
     public PlayerController MovementScript;
     public Enemy_Move2 MoveStart;
     public Mouse_Move stopMouse;

@@ -29,8 +29,7 @@ Transform:
   m_LocalRotation: {x: 0.33661017, y: 0.3321181, z: 0.621847, w: 0.6242576}
   m_LocalPosition: {x: 7.236, y: 0.845, z: 9.132}
   m_LocalScale: {x: 1, y: 1, z: 1.158804}
-  m_Children:
-  - {fileID: 872359661}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.41300002, y: 56.441, z: 90.00001}
@@ -94,67 +93,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6694964, y: 0.3072169, z: 1.8112451}
   m_Center: {x: -0.0016842214, y: 0.0019227496, z: 0.7875958}
---- !u!1 &872359660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 872359661}
-  - component: {fileID: 872359662}
-  m_Layer: 0
-  m_Name: Reflection Probe
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &872359661
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872359660}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.010709047, y: -0.036999702, z: 0.96823967}
-  m_LocalScale: {x: -0.00326768, y: -0.03960722, z: 0.64091015}
-  m_Children: []
-  m_Father: {fileID: 130331683}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!215 &872359662
-ReflectionProbe:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872359660}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Type: 0
-  m_Mode: 1
-  m_RefreshMode: 1
-  m_TimeSlicingMode: 0
-  m_Resolution: 128
-  m_UpdateFrequency: 0
-  m_BoxSize: {x: 0.7248101, y: 1.9419994, z: 0.11422062}
-  m_BoxOffset: {x: 0.008481741, y: -0.12448597, z: 0.05711031}
-  m_NearClip: 0.3
-  m_FarClip: 1000
-  m_ShadowDistance: 100
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IntensityMultiplier: 1
-  m_BlendDistance: 1
-  m_HDR: 1
-  m_BoxProjection: 0
-  m_RenderDynamicObjects: 0
-  m_UseOcclusionCulling: 1
-  m_Importance: 1
-  m_CustomBakedTexture: {fileID: 0}

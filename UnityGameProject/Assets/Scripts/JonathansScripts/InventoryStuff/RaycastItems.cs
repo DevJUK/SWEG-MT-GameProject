@@ -48,7 +48,8 @@ public class RaycastItems : MonoBehaviour
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
-                    NPCInteractionScrpt.StartInteraction();
+					PickupScript.BlankText();
+					NPCInteractionScrpt.StartInteraction();
 
                     if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
                     {
@@ -63,7 +64,8 @@ public class RaycastItems : MonoBehaviour
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
-                    MirrorTipScript.TipMirror();
+					PickupScript.BlankText();
+					MirrorTipScript.TipMirror();
                 }
             }
 

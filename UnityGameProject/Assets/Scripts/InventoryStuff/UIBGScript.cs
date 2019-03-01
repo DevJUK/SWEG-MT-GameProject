@@ -25,9 +25,19 @@ public class UIBGScript : MonoBehaviour
 		{
 			ThrowScript.ItemHeld = ThisItem.gameObject;
 			ThisItem.RemoveItemFromInv();
-			InvScript.gameObject.GetComponentInParent<InvButtonScript>().Inv.SetActive(false);
-			InvScript.gameObject.GetComponentInParent<InvButtonScript>().OpenInv();
 		}
+	}
+
+	public void DropItem()
+	{
+		ThisItem.RemoveItemFromInv();
+	}
+
+	public void CloseUI()
+	{
+		InvScript.gameObject.GetComponentInParent<InvButtonScript>().OpenInv();
+		InvScript.PrefabMade = false;
+		Destroy(this.gameObject);
 	}
 
 }

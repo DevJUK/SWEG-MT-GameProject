@@ -30,7 +30,7 @@ public class InventoryScript : MonoBehaviour
 	public int NumberOfPresses;
 	public GameObject ItemDetailPrefab;
 	internal bool PanelOpen;
-	private bool PrefabMade;
+	internal bool PrefabMade;
 
 
 	private void Start()
@@ -158,10 +158,16 @@ public class InventoryScript : MonoBehaviour
 		{
 			if (items[i] == SelectedItem)                              // Check to see if the item inputted is in the inventory
 			{
-				//items[i].gameObject.transform.position = new Vector3(Player.transform.position.x - 1, Player.transform.position.y, Player.transform.position.z); 
-
+				items[i].gameObject.transform.position = Player.GetComponentInChildren<ThrowableItemScript>().gameObject.transform.position;
+				items[i].transform.SetParent(null);
 				items[i].gameObject.SetActive(true);
-				items[i].gameObject.GetComponent<Item>().enabled = false;
+				
+				if (!items[i].gameObject.GetComponent<Rigidbody>())
+				{
+					items[i].gameObject.AddComponent<Rigidbody>();
+				}
+
+				items[i].gameObject.GetComponent<Item>().enabled = true;
 
 				items[i] = null;                                // removes the item from the inventory returning it to null
 				ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
@@ -226,6 +232,7 @@ public class InventoryScript : MonoBehaviour
 					}
 				}
 
+				Panel.GetComponent<UIBGScript>().ThisItem = SelectedItem;
 				SelectedItem = null;
 				NumberOfPresses = 0;
 			}
@@ -241,7 +248,7 @@ public class InventoryScript : MonoBehaviour
 			items[i] = null;
 			ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 			ItemImages[i].enabled = false;
-			ItemImages[i].GetComponent<Stack>().ResetStack();
+			//ItemImages[i].GetComponent<Stack>().ResetStack();
 		}
 	}
 

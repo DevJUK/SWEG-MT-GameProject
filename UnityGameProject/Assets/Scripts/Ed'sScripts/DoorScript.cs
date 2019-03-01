@@ -11,6 +11,7 @@ public class DoorScript : MonoBehaviour
 
 	public List<GameObject> Doors;
 
+
 	private void Update()
 	{
 		if (Input.GetButton("Pickup"))
@@ -41,6 +42,11 @@ public class DoorScript : MonoBehaviour
 
 				// -- Jonathan Addition Start --
 				foreach (GameObject G in Doors)
+				{
+					G.GetComponent<Animator>().SetTrigger("DoorClosed");
+				}
+
+				foreach (GameObject G in GetComponentsInChildren<GameObject>())
 				{
 					G.GetComponent<Animator>().SetTrigger("DoorClosed");
 				}

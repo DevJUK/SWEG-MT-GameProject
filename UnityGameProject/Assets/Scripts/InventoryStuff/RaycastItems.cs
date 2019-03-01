@@ -8,8 +8,6 @@ public class RaycastItems : MonoBehaviour
 	public GameObject UI;
 	private bool UIOpen;
 
-	private RaycastHit LastHit;
-
 	public PickupUIText PickupScript;
 	private ThrowableItemScript ThrowScript;
 
@@ -33,8 +31,6 @@ public class RaycastItems : MonoBehaviour
 
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
-
-			LastHit = Hit;
 
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
@@ -69,7 +65,6 @@ public class RaycastItems : MonoBehaviour
 
             else
             {
-
 				if (Input.GetButtonDown("Pickup")) // E Key
                 {
 					if (ThrowScript.ItemHeld != null)

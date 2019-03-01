@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
     private Rigidbody Rigid;
 
     public Event_Start Boolon;
+    public Larder_Event_Start Boolon2;
 
     Animator anim; //Assigns the animator
 

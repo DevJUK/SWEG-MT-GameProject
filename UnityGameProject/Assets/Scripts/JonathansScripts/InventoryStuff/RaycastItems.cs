@@ -32,6 +32,8 @@ public class RaycastItems : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
 
+            Debug.Log(Hit.transform.gameObject.name);
+
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
             {
@@ -48,8 +50,9 @@ public class RaycastItems : MonoBehaviour
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
-					PickupScript.BlankText();
-					NPCInteractionScrpt.StartInteraction();
+
+					NPCInteractionScrpt.StartInteraction(Hit.transform.gameObject);
+                    PickupScript.BlankText();
 
                     if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
                     {

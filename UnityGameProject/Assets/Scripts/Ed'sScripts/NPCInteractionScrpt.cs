@@ -47,7 +47,7 @@ public class NPCInteractionScrpt : MonoBehaviour
     public GameObject DialogueOptionCanvas;
 
     private RaycastItems RaycastItems; // The script that tells us if we are looking at an item or npc
-    private NPCDialogueScrpt NPCDialogueScrpt; // The script that has all the NPC's dialogue in it
+    public NPCDialogueScrpt NPCDialogueScrpt; // The script that has all the NPC's dialogue in it
     private bool NPCNameSet; // Has the NPC's name been set yet?
 
     [Header("Dialogue Path Values")]
@@ -159,6 +159,14 @@ public class NPCInteractionScrpt : MonoBehaviour
     {
         // Used to get the dialogue script from the NPC the player is currently interacting with
         NPCDialogueScrpt = GameObject.Find(RaycastItems.NameofNPCHit).GetComponent<NPCDialogueScrpt>(); 
+
+        Interacting = true;
+    }
+
+    public void StartInteraction(GameObject Hit) // Call this to start interacting..... duh
+    {
+        // Used to get the dialogue script from the NPC the player is currently interacting with
+        NPCDialogueScrpt = Hit.GetComponent<NPCDialogueScrpt>();
 
         Interacting = true;
     }

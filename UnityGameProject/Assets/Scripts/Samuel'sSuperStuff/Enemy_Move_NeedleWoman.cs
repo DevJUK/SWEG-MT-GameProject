@@ -45,9 +45,7 @@ public class Enemy_Move_NeedleWoman : MonoBehaviour
                         anim.SetBool("Stab", false);
 
                         StartCoroutine(StabPlaying(WaitTime));
-                        Stats.Strength--;
-                        Stats.Agility--;
-                        NeedleWoman.SetActive(false);
+                        
                 }
                     else
                     {
@@ -70,5 +68,8 @@ public class Enemy_Move_NeedleWoman : MonoBehaviour
     IEnumerator StabPlaying(float Wait)
     {
         yield return new WaitForSeconds(Wait);
+        Stats.Strength--;
+        Stats.Agility--;
+        NeedleWoman.SetActive(false);
     }
 }

@@ -32,6 +32,8 @@ public class Larder_Event_Start : MonoBehaviour
             MovementScript.enabled = false;
             stopMouse.enabled = false;            
             Event = true;
+
+            MovementScript.gameObject.GetComponent<Stats>().Health -= 2;
         }
     }
 }

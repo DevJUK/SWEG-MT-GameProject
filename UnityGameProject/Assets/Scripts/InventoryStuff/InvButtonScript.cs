@@ -44,7 +44,7 @@ public class InvButtonScript : MonoBehaviour
 	}
 
 
-	private void StopCamera()
+	internal void StopCamera()
 	{
 		foreach (Mouse_Move i in FindObjectsOfType<Mouse_Move>())
 		{

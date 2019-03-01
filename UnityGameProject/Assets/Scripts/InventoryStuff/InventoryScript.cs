@@ -158,7 +158,7 @@ public class InventoryScript : MonoBehaviour
 		{
 			if (items[i] == SelectedItem)                              // Check to see if the item inputted is in the inventory
 			{
-				items[i].gameObject.transform.position = new Vector3(Player.transform.position.x - 1, Player.transform.position.y, Player.transform.position.z); 
+				//items[i].gameObject.transform.position = new Vector3(Player.transform.position.x - 1, Player.transform.position.y, Player.transform.position.z); 
 
 				items[i].gameObject.SetActive(true);
 				items[i].gameObject.GetComponent<Item>().enabled = false;

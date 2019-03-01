@@ -31,7 +31,6 @@ public class RaycastItems : MonoBehaviour
 		RaycastHit Hit;
         
 
-
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
 
@@ -80,7 +79,6 @@ public class RaycastItems : MonoBehaviour
 					}
 					else
 					{
-						Debug.Log("Throw Item Test");
 						if (Hit.transform.gameObject.GetComponent<Item>())
 						{
 							ThrowScript.ItemHeld = Hit.transform.gameObject;
